@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Catlink: Platform Selection</title>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13c8ec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#101f22",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body>
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden font-display text-slate-900 dark:text-white">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Header -->
+<div class="w-full px-4 sm:px-6 lg:px-40 flex justify-center pt-6 pb-2">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<header class="flex items-center justify-between whitespace-nowrap px-4 py-3">
+<div class="flex items-center gap-4">
+<a class="flex items-center gap-2 text-slate-900 dark:text-white hover:text-primary transition-colors text-sm font-bold leading-normal" href="#">
+<span class="material-symbols-outlined text-xl">arrow_back_ios_new</span>
+                                Back
+                            </a>
+</div>
+<div class="flex items-center gap-4">
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-sm font-bold leading-normal" href="#">
+                                Skip
+                            </a>
+</div>
+</header>
+</div>
+</div>
+<!-- Main Content -->
+<div class="px-4 sm:px-6 lg:px-40 flex flex-1 justify-center pb-20">
+<div class="layout-content-container flex flex-col max-w-[800px] flex-1">
+<!-- Headlines -->
+<div class="flex flex-col items-center justify-center pt-4 pb-8">
+<h1 class="text-slate-900 dark:text-white tracking-tight text-[28px] sm:text-[32px] font-bold leading-tight px-4 text-center mb-2">
+                            Which platforms are you on?
+                        </h1>
+<p class="text-slate-500 dark:text-slate-400 text-base font-normal leading-normal px-4 text-center max-w-md">
+                            Pick up to five to get started. You can update at any time.
+                        </p>
+</div>
+<!-- Platform Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-4">
+<!-- Instagram (Selected Example) -->
+<div class="group relative flex flex-col items-center justify-center gap-3 rounded-xl bg-white dark:bg-[#1a2628] p-4 aspect-square cursor-pointer border-2 border-primary shadow-lg transition-all hover:scale-[1.02]">
+<div class="absolute top-2 right-2 size-6 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-background-dark text-sm font-bold">check</span>
+</div>
+<div class="size-12 rounded-full bg-pink-500/10 flex items-center justify-center text-pink-500 group-hover:bg-pink-500 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[32px]">camera_alt</span>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight text-center">Instagram</p>
+</div>
+<!-- WhatsApp -->
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-white dark:bg-[#1a2628] p-4 aspect-square cursor-pointer border-2 border-transparent hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-[#223033] transition-all">
+<div class="size-12 rounded-full bg-green-500/10 flex items-center justify-center text-green-500">
+<span class="material-symbols-outlined text-[32px]">chat</span>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight text-center">WhatsApp</p>
+</div>
+<!-- TikTok -->
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-white dark:bg-[#1a2628] p-4 aspect-square cursor-pointer border-2 border-transparent hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-[#223033] transition-all">
+<div class="size-12 rounded-full bg-slate-900/10 dark:bg-white/10 flex items-center justify-center text-slate-900 dark:text-white">
+<span class="material-symbols-outlined text-[32px]">music_note</span>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight text-center">TikTok</p>
+</div>
+<!-- YouTube -->
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-white dark:bg-[#1a2628] p-4 aspect-square cursor-pointer border-2 border-transparent hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-[#223033] transition-all">
+<div class="size-12 rounded-full bg-red-600/10 flex items-center justify-center text-red-600">
+<span class="material-symbols-outlined text-[32px]">smart_display</span>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight text-center">YouTube</p>
+</div>
+<!-- Website (Selected Example) -->
+<div class="group relative flex flex-col items-center justify-center gap-3 rounded-xl bg-white dark:bg-[#1a2628] p-4 aspect-square cursor-pointer border-2 border-primary shadow-lg transition-all hover:scale-[1.02]">
+<div class="absolute top-2 right-2 size-6 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-background-dark text-sm font-bold">check</span>
+</div>
+<div class="size-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[32px]">language</span>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight text-center">Website</p>
+</div>
+<!-- Spotify -->
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-white dark:bg-[#1a2628] p-4 aspect-square cursor-pointer border-2 border-transparent hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-[#223033] transition-all">
+<div class="size-12 rounded-full bg-green-400/10 flex items-center justify-center text-green-400">
+<span class="material-symbols-outlined text-[32px]">graphic_eq</span>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight text-center">Spotify</p>
+</div>
+<!-- Threads -->
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-white dark:bg-[#1a2628] p-4 aspect-square cursor-pointer border-2 border-transparent hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-[#223033] transition-all">
+<div class="size-12 rounded-full bg-slate-900/10 dark:bg-white/10 flex items-center justify-center text-slate-900 dark:text-white">
+<span class="material-symbols-outlined text-[32px]">alternate_email</span>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight text-center">Threads</p>
+</div>
+<!-- Facebook -->
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-white dark:bg-[#1a2628] p-4 aspect-square cursor-pointer border-2 border-transparent hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-[#223033] transition-all">
+<div class="size-12 rounded-full bg-blue-700/10 flex items-center justify-center text-blue-700">
+<span class="material-symbols-outlined text-[32px]">public</span>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight text-center">Facebook</p>
+</div>
+<!-- X -->
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-white dark:bg-[#1a2628] p-4 aspect-square cursor-pointer border-2 border-transparent hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-[#223033] transition-all">
+<div class="size-12 rounded-full bg-slate-900/10 dark:bg-white/10 flex items-center justify-center text-slate-900 dark:text-white">
+<span class="material-symbols-outlined text-[32px]">close</span>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight text-center">X</p>
+</div>
+<!-- SoundCloud -->
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-white dark:bg-[#1a2628] p-4 aspect-square cursor-pointer border-2 border-transparent hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-[#223033] transition-all">
+<div class="size-12 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-500">
+<span class="material-symbols-outlined text-[32px]">cloud</span>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight text-center">SoundCloud</p>
+</div>
+<!-- Snapchat -->
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-white dark:bg-[#1a2628] p-4 aspect-square cursor-pointer border-2 border-transparent hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-[#223033] transition-all">
+<div class="size-12 rounded-full bg-yellow-400/10 flex items-center justify-center text-yellow-400">
+<span class="material-symbols-outlined text-[32px]">sentiment_satisfied</span>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight text-center">Snapchat</p>
+</div>
+<!-- Pinterest -->
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-white dark:bg-[#1a2628] p-4 aspect-square cursor-pointer border-2 border-transparent hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-[#223033] transition-all">
+<div class="size-12 rounded-full bg-red-700/10 flex items-center justify-center text-red-700">
+<span class="material-symbols-outlined text-[32px]">push_pin</span>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight text-center">Pinterest</p>
+</div>
+<!-- Patreon -->
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-white dark:bg-[#1a2628] p-4 aspect-square cursor-pointer border-2 border-transparent hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-[#223033] transition-all">
+<div class="size-12 rounded-full bg-red-400/10 flex items-center justify-center text-red-400">
+<span class="material-symbols-outlined text-[32px]">monetization_on</span>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight text-center">Patreon</p>
+</div>
+<!-- Twitch -->
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-white dark:bg-[#1a2628] p-4 aspect-square cursor-pointer border-2 border-transparent hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-[#223033] transition-all">
+<div class="size-12 rounded-full bg-purple-600/10 flex items-center justify-center text-purple-600">
+<span class="material-symbols-outlined text-[32px]">videogame_asset</span>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight text-center">Twitch</p>
+</div>
+<!-- Apple Music -->
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-white dark:bg-[#1a2628] p-4 aspect-square cursor-pointer border-2 border-transparent hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-[#223033] transition-all">
+<div class="size-12 rounded-full bg-pink-600/10 flex items-center justify-center text-pink-600">
+<span class="material-symbols-outlined text-[32px]">library_music</span>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight text-center">Apple Music</p>
+</div>
+</div>
+<!-- Footer Action -->
+<div class="flex px-4 py-6 justify-center mt-auto">
+<button class="flex min-w-[200px] w-full max-w-[320px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary hover:bg-primary/90 transition-colors text-background-dark text-base font-bold leading-normal tracking-[0.015em] shadow-lg shadow-primary/20">
+<span class="truncate">Continue</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

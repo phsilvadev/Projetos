@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BioLink Editor - Edit Map Block</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#6366f1", // Indigo-500 equivalent
+                        "primary-dark": "#4f46e5",
+                        "background-light": "#f3f4f6", // Gray-100
+                        "background-dark": "#0f172a", // Slate-900
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e293b", // Slate-800
+                        "sidebar-dark": "#111827", // Gray-900
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'phone': '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                        'glow': '0 0 20px rgba(99, 102, 241, 0.5)',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #475569;
+        }
+        .app-bg-pattern {
+            background-color: #111827;
+            background-image: radial-gradient(#374151 1px, transparent 1px);
+            background-size: 24px 24px;
+        }.map-pattern {
+            background-color: #e5e7eb;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.4) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(255,255,255,0.4) 2px, transparent 2px);
+            background-size: 40px 40px;
+            position: relative;
+        }
+        .map-road-1 {
+            position: absolute;
+            top: 20%;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: #ffffff;
+            transform: skewY(-5deg);
+        }
+        .map-road-2 {
+            position: absolute;
+            top: 0;
+            left: 40%;
+            width: 15px;
+            height: 100%;
+            background: #ffffff;
+            transform: skewX(10deg);
+        }
+        .map-water {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 120px;
+            height: 80px;
+            background: #bfdbfe;
+            border-top-left-radius: 100%;
+        }
+    </style>
+</head>
+<body class="bg-surface-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-sans h-screen flex overflow-hidden selection:bg-primary selection:text-white">
+<div class="hidden lg:flex lg:w-1/2 xl:w-5/12 bg-sidebar-dark relative flex-col justify-between overflow-hidden">
+<div class="absolute inset-0 app-bg-pattern opacity-40"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-sidebar-dark/50 to-sidebar-dark"></div>
+<div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/30 rounded-full blur-3xl mix-blend-screen animate-pulse"></div>
+<div class="absolute bottom-1/3 right-1/4 w-80 h-80 bg-purple-600/20 rounded-full blur-3xl mix-blend-screen"></div>
+<div class="relative z-10 p-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-gradient-to-tr from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center shadow-lg">
+<span class="material-icons-round text-white text-xl">auto_awesome</span>
+</div>
+<span class="text-white font-bold text-xl tracking-tight">SmartBio</span>
+</div>
+</div>
+<div class="relative z-10 flex-1 flex items-center justify-center perspective-[1000px]">
+<div class="relative transform rotate-y-6 rotate-z-2 scale-95 hover:rotate-y-0 hover:rotate-z-0 transition-all duration-700 ease-out shadow-2xl rounded-[45px]">
+<div class="relative w-[300px] h-[600px] bg-black rounded-[40px] shadow-phone border-[8px] border-black overflow-hidden z-0">
+<div class="absolute top-0 w-full h-8 z-20 flex justify-between items-center px-6 pt-2 text-white text-xs font-semibold mix-blend-difference">
+<span>9:41</span>
+<div class="flex gap-1.5 items-center">
+<span class="material-icons-round text-[10px]">signal_cellular_alt</span>
+<span class="material-icons-round text-[10px]">wifi</span>
+<span class="material-icons-round text-[10px] rotate-90">battery_full</span>
+</div>
+</div>
+<div class="absolute top-2 left-1/2 transform -translate-x-1/2 w-20 h-5 bg-black rounded-full z-20"></div>
+<div class="w-full h-full bg-gray-50 relative overflow-hidden text-gray-900 font-sans flex flex-col">
+<div class="relative h-32 w-full overflow-hidden bg-white border-b border-gray-100"></div>
+<div class="relative -mt-10 flex justify-center z-10">
+<div class="w-20 h-20 rounded-full border-4 border-white shadow-lg overflow-hidden bg-gray-200 relative group cursor-pointer">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeFeSw-apJZAHOd-ZWUvTc2365vx8RFlT6RZKJyJFUlUYOdt79yiX5ZG0VyC4VqT2CCt0diz2G5y7iteKDhoNIx-VT9f5cPvo-N8CwXrtEpMug4AIfEWYMWAnx8MJxoZKO9xFXG9kx50tEpG2S0mxdMQREIzyFw1plNyUZ6Qn_8bmkUkhKZgiUYG6iYYjVjqOkz1GBXoo5vrkqYHpjFTDDWZYwNbrqSS3A42Z8xBI7ieYU_krQMo9Z_jlPBuc7yU2bx5ifPD54O1bs"/>
+<div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-icons-round text-white text-sm">edit</span>
+</div>
+</div>
+</div>
+<div class="text-center px-4 mt-3 mb-6">
+<h1 class="text-lg font-bold text-gray-900 tracking-tight flex items-center justify-center gap-1">
+                                PixelMaster <span class="material-icons-round text-blue-500 text-sm">verified</span>
+</h1>
+<p class="text-[11px] text-gray-500 mt-1">Design | Code | Minimalist</p>
+</div>
+<div class="px-5 flex-1 pb-8 overflow-y-auto custom-scrollbar">
+<div class="group relative bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer hover:shadow-md transition-shadow ring-2 ring-primary ring-offset-2 ring-offset-gray-50">
+<div class="h-32 map-pattern w-full relative">
+<div class="map-road-1"></div>
+<div class="map-road-2"></div>
+<div class="map-water"></div>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -mt-2">
+<span class="material-icons-round text-red-500 text-4xl drop-shadow-md animate-bounce">location_on</span>
+</div>
+</div>
+<div class="p-3 bg-white border-t border-gray-100 flex items-center justify-between">
+<div class="flex flex-col min-w-0">
+<span class="text-xs font-bold text-gray-800 truncate">Empire State Building</span>
+<span class="text-[10px] text-gray-500 truncate">20 W 34th St, New York</span>
+</div>
+<div class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
+<span class="material-icons-round text-gray-400 text-xs">directions</span>
+</div>
+</div>
+<div class="absolute inset-0 bg-primary/10 border-2 border-primary rounded-2xl opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity flex items-center justify-center">
+</div>
+</div>
+</div>
+<div class="flex justify-center gap-6 pb-8">
+<div class="text-gray-300 transition-all cursor-default"><i class="fab fa-twitter text-lg"></i></div>
+<div class="text-gray-300 transition-all cursor-default"><i class="fab fa-instagram text-lg"></i></div>
+<div class="text-gray-300 transition-all cursor-default"><i class="fab fa-linkedin text-lg"></i></div>
+</div>
+</div>
+</div>
+<div class="absolute -right-12 top-24 bg-surface-dark text-white p-3 pr-4 rounded-l-none rounded-r-2xl shadow-xl flex items-center gap-3 border-l-4 border-primary">
+<div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+<div>
+<div class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Status</div>
+<div class="text-sm font-bold">Draft Mode</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative z-10 p-8 text-white/90">
+<h2 class="text-2xl font-bold mb-1">Live Preview</h2>
+<p class="text-gray-400 font-light text-sm max-w-sm">Changes you make in the editor appear here instantly.</p>
+</div>
+</div>
+<div class="flex-1 flex flex-col p-0 bg-surface-light dark:bg-background-dark overflow-hidden relative">
+<div class="lg:hidden p-6 flex items-center gap-2 border-b border-gray-200 dark:border-gray-800">
+<div class="w-8 h-8 bg-gradient-to-tr from-purple-500 to-indigo-500 rounded-lg flex items-center justify-center shadow-lg">
+<span class="material-icons-round text-white text-sm">auto_awesome</span>
+</div>
+<span class="text-gray-900 dark:text-white font-bold text-lg">SmartBio</span>
+</div>
+<header class="px-6 py-4 lg:px-12 lg:py-8 border-b border-gray-200 dark:border-gray-800 flex justify-between items-center bg-white dark:bg-surface-dark sticky top-0 z-20">
+<div>
+<h2 class="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white">Editor</h2>
+<div class="flex items-center gap-2 text-xs text-gray-500 mt-1">
+<span>My Page</span>
+<span class="material-icons-round text-[10px]">chevron_right</span>
+<span class="text-primary font-medium">Blocks</span>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">
+<span class="material-icons-round text-base">visibility</span>
+                    Preview
+                </button>
+<button class="flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-bold text-white bg-gray-900 dark:bg-primary hover:bg-gray-800 dark:hover:bg-primary-dark transition-all shadow-lg shadow-primary/20">
+                    Share
+                    <span class="material-icons-round text-sm">ios_share</span>
+</button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-6 lg:p-12 relative">
+<div class="w-full max-w-2xl mx-auto">
+<div class="flex gap-8 border-b border-gray-200 dark:border-gray-700 mb-8 sticky top-0 bg-surface-light dark:bg-background-dark z-10 pt-2">
+<button class="pb-3 border-b-2 border-primary text-primary font-semibold text-sm flex items-center gap-2">
+<span class="material-icons-round text-base">layers</span> Blocks
+                    </button>
+<button class="pb-3 border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors text-sm font-medium flex items-center gap-2">
+<span class="material-icons-round text-base">palette</span> Appearance
+                    </button>
+<button class="pb-3 border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors text-sm font-medium flex items-center gap-2">
+<span class="material-icons-round text-base">settings</span> Settings
+                    </button>
+</div>
+<div class="animate-in fade-in slide-in-from-bottom-4 duration-300">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-4">
+<button class="w-9 h-9 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark hover:bg-gray-50 dark:hover:bg-gray-800 flex items-center justify-center transition-colors text-gray-500 dark:text-gray-400 shadow-sm">
+<span class="material-icons-round text-lg">arrow_back</span>
+</button>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+<span class="material-icons-round text-xl">place</span>
+</div>
+<div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white leading-tight">Map</h3>
+<p class="text-xs text-gray-500 dark:text-gray-400">Editing block configuration</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-green-100 dark:bg-green-900/30 rounded-full">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="text-xs font-bold text-green-700 dark:text-green-300 uppercase tracking-wide">Active</span>
+</div>
+<button class="w-9 h-9 rounded-xl border border-red-100 dark:border-red-900/30 bg-red-50 dark:bg-red-900/10 hover:bg-red-100 dark:hover:bg-red-900/30 flex items-center justify-center transition-colors text-red-500 dark:text-red-400">
+<span class="material-icons-round text-lg">delete_outline</span>
+</button>
+</div>
+</div>
+<div class="space-y-6">
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<label class="block text-sm font-bold text-gray-900 dark:text-white">Location Address</label>
+<span class="text-xs text-primary cursor-pointer hover:underline font-medium">Use my current location</span>
+</div>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-icons-round text-gray-400 group-focus-within:text-primary transition-colors">search</span>
+</div>
+<input class="block w-full pl-11 pr-4 py-3 bg-gray-50 dark:bg-slate-800/50 border border-gray-200 dark:border-gray-600 rounded-xl text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all" placeholder="Enter an address..." type="text" value="Empire State Building, NY"/>
+<div class="absolute inset-y-0 right-2 flex items-center">
+<button class="p-1.5 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg text-gray-400 transition-colors">
+<span class="material-icons-round text-sm">close</span>
+</button>
+</div>
+</div>
+<div class="mt-4 h-40 w-full rounded-xl overflow-hidden relative border border-gray-200 dark:border-gray-600 map-pattern group cursor-pointer">
+<div class="map-road-1"></div>
+<div class="map-road-2"></div>
+<div class="map-water"></div>
+<div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center">
+<button class="px-4 py-2 bg-white dark:bg-surface-dark shadow-lg rounded-lg text-xs font-bold text-gray-700 dark:text-gray-200 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-200">
+                                            Reposition Marker
+                                        </button>
+</div>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -mt-2 pointer-events-none">
+<span class="material-icons-round text-red-500 text-3xl drop-shadow-md">location_on</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-2xl p-5 shadow-sm">
+<label class="block text-sm font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+<span class="material-icons-round text-gray-400 text-base">map</span> Map Style
+                                </label>
+<div class="grid grid-cols-3 gap-2">
+<button class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg border-2 border-primary bg-primary/5 text-primary">
+<span class="material-icons-round text-lg">map</span>
+<span class="text-[10px] font-bold">Standard</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg border border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-all">
+<span class="material-icons-round text-lg">satellite_alt</span>
+<span class="text-[10px] font-medium">Satellite</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg border border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-all">
+<span class="material-icons-round text-lg">layers</span>
+<span class="text-[10px] font-medium">Hybrid</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-2xl p-5 shadow-sm">
+<label class="block text-sm font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+<span class="material-icons-round text-gray-400 text-base">palette</span> Marker Color
+                                </label>
+<div class="flex justify-between items-center gap-2">
+<button class="w-8 h-8 rounded-full bg-red-500 ring-2 ring-offset-2 ring-red-500 dark:ring-offset-surface-dark"></button>
+<button class="w-8 h-8 rounded-full bg-blue-500 hover:scale-110 transition-transform"></button>
+<button class="w-8 h-8 rounded-full bg-green-500 hover:scale-110 transition-transform"></button>
+<button class="w-8 h-8 rounded-full bg-purple-500 hover:scale-110 transition-transform"></button>
+<button class="w-8 h-8 rounded-full bg-gray-800 hover:scale-110 transition-transform"></button>
+<button class="w-8 h-8 rounded-full bg-gray-100 border border-gray-300 flex items-center justify-center text-gray-400 hover:bg-gray-200 transition-colors">
+<span class="material-icons-round text-sm">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm space-y-6">
+<div>
+<div class="flex justify-between items-center mb-2">
+<label class="text-sm font-bold text-gray-900 dark:text-white flex items-center gap-2">
+<span class="material-icons-round text-gray-400 text-base">zoom_in</span> Zoom Level
+                                    </label>
+<span class="text-xs font-mono font-medium text-gray-500 bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded">14x</span>
+</div>
+<input class="w-full accent-primary h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer" max="20" min="1" type="range" value="14"/>
+<div class="flex justify-between text-[10px] text-gray-400 mt-1">
+<span>City</span>
+<span>Street</span>
+<span>Building</span>
+</div>
+</div>
+<div class="pt-4 border-t border-gray-100 dark:border-gray-700">
+<div class="flex justify-between items-center mb-2">
+<label class="text-sm font-bold text-gray-900 dark:text-white flex items-center gap-2">
+<span class="material-icons-round text-gray-400 text-base">height</span> Map Height
+                                    </label>
+<span class="text-xs font-mono font-medium text-gray-500 bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded">Small</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 text-xs font-medium bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors">Small</button>
+<button class="flex-1 py-2 text-xs font-medium border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 rounded-lg hover:text-primary transition-colors">Medium</button>
+<button class="flex-1 py-2 text-xs font-medium border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 rounded-lg hover:text-primary transition-colors">Large</button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden shadow-sm">
+<div class="p-4 flex items-center justify-between border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer group">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-gray-900 dark:text-white">Show Address Text</span>
+<span class="text-xs text-gray-500 group-hover:text-gray-600 transition-colors">Display the text address below the map</span>
+</div>
+<div class="relative inline-flex h-6 w-11 items-center rounded-full bg-primary cursor-pointer transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+<span class="translate-x-6 pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</div>
+</div>
+<div class="p-4 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer group">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-gray-900 dark:text-white">Allow Directions</span>
+<span class="text-xs text-gray-500 group-hover:text-gray-600 transition-colors">Button to open external maps app</span>
+</div>
+<div class="relative inline-flex h-6 w-11 items-center rounded-full bg-primary cursor-pointer transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+<span class="translate-x-6 pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</div>
+</div>
+</div>
+<button class="w-full py-3.5 bg-gray-900 dark:bg-primary text-white rounded-xl font-bold shadow-lg shadow-gray-900/10 dark:shadow-primary/20 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200">
+                                Save Changes
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-20 hidden lg:flex items-center justify-center gap-6 text-xs text-gray-400 absolute bottom-6 w-full">
+<a class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors" href="#">Help Center</a>
+<span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+<a class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors" href="#">Shortcuts</a>
+</div>
+</div>
+
+</body></html>

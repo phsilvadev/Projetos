@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Catlink - One link for everything</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#6366f1", // Indigo-500 equivalent
+                        "primary-dark": "#4f46e5",
+                        "background-light": "#f3f4f6", // Gray-100
+                        "background-dark": "#0f172a", // Slate-900
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e293b", // Slate-800
+                        "sidebar-dark": "#111827", // Gray-900
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'phone': '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                        'glow': '0 0 20px rgba(99, 102, 241, 0.5)',
+                        'xl-soft': '0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #475569;
+        }
+        .app-bg-pattern {
+            background-color: #f3f4f6;
+            background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .dark .app-bg-pattern {
+            background-color: #0f172a;
+            background-image: radial-gradient(#374151 1px, transparent 1px);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .dark .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-surface-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-sans min-h-screen overflow-x-hidden selection:bg-primary selection:text-white">
+<nav class="fixed w-full z-50 transition-all duration-300 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-gradient-to-tr from-purple-500 to-indigo-500 rounded-lg flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-white text-lg">pets</span>
+</div>
+<span class="font-bold text-xl tracking-tight text-gray-900 dark:text-white">Catlink</span>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors" href="#">Templates</a>
+<a class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors" href="#">Marketplace</a>
+<a class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors" href="#">Discover</a>
+<a class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors" href="#">Pricing</a>
+</div>
+<div class="flex items-center gap-4">
+<a class="hidden sm:block text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 px-4 py-2 rounded-lg transition-colors" href="#">Log in</a>
+<a class="bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-primary/30 transition-all transform hover:-translate-y-0.5" href="#">Sign up free</a>
+</div>
+</div>
+</div>
+</nav>
+<section class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+<div class="absolute inset-0 app-bg-pattern opacity-60"></div>
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-screen animate-pulse"></div>
+<div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-screen"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+<div class="flex-1 text-center lg:text-left">
+<h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-6 leading-tight">
+                        One link to <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600">rule them all.</span>
+</h1>
+<p class="text-lg lg:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Join 35M+ creators using Catlink for their link in bio. Share your latest video, article, store, and social posts—everything you are, in one simple link. Meow.
+                    </p>
+<form class="flex flex-col sm:flex-row gap-3 w-full max-w-lg mx-auto lg:mx-0 relative">
+<div class="relative flex-grow group">
+<span class="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-400 font-semibold select-none">catlink.bio/</span>
+<input class="block w-full pl-28 pr-4 py-4 border-2 border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-surface-dark text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-primary font-medium transition-colors shadow-sm group-hover:border-gray-300 dark:group-hover:border-gray-600" placeholder="yourname" type="text"/>
+</div>
+<button class="whitespace-nowrap px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-xl font-bold text-lg hover:bg-gray-800 dark:hover:bg-gray-200 shadow-xl transition-all transform hover:scale-[1.02]" type="button">
+                            Claim your Catlink
+                        </button>
+</form>
+<p class="mt-4 text-sm text-gray-500 dark:text-gray-400 font-medium">
+<span class="text-primary">Free forever</span> for creators. No credit card required.
+                    </p>
+</div>
+<div class="flex-1 flex justify-center perspective-[1000px]">
+<div class="relative transform rotate-y-[-12deg] rotate-x-[5deg] hover:rotate-y-0 hover:rotate-x-0 transition-all duration-700 ease-out z-10 animate-float">
+<div class="relative w-[300px] h-[600px] bg-black rounded-[45px] shadow-phone border-[8px] border-black overflow-hidden ring-1 ring-gray-800">
+<div class="absolute top-0 w-full h-7 z-20 flex justify-center">
+<div class="w-32 h-6 bg-black rounded-b-2xl"></div>
+</div>
+<div class="absolute top-0 w-full h-8 z-20 flex justify-between items-center px-6 pt-2 text-white text-[10px] font-semibold">
+<span>9:41</span>
+<div class="flex gap-1">
+<span class="material-symbols-outlined text-[12px]">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[12px]">wifi</span>
+<span class="material-symbols-outlined text-[12px] rotate-90">battery_full</span>
+</div>
+</div>
+<div class="w-full h-full bg-white relative overflow-hidden flex flex-col">
+<div class="h-32 w-full bg-gradient-to-r from-violet-500 to-fuchsia-500 relative">
+<div class="absolute inset-0 bg-black/10"></div>
+</div>
+<div class="relative -mt-12 flex flex-col items-center px-6 pb-6 flex-1 bg-white">
+<div class="w-24 h-24 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-200 mb-3">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeFeSw-apJZAHOd-ZWUvTc2365vx8RFlT6RZKJyJFUlUYOdt79yiX5ZG0VyC4VqT2CCt0diz2G5y7iteKDhoNIx-VT9f5cPvo-N8CwXrtEpMug4AIfEWYMWAnx8MJxoZKO9xFXG9kx50tEpG2S0mxdMQREIzyFw1plNyUZ6Qn_8bmkUkhKZgiUYG6iYYjVjqOkz1GBXoo5vrkqYHpjFTDDWZYwNbrqSS3A42Z8xBI7ieYU_krQMo9Z_jlPBuc7yU2bx5ifPD54O1bs"/>
+</div>
+<div class="text-center mb-6">
+<h2 class="text-xl font-bold text-gray-900 flex items-center justify-center gap-1">
+                                            Kitty Perry 
+                                            <span class="material-symbols-outlined text-blue-500 text-sm" style="font-variation-settings: 'FILL' 1">verified</span>
+</h2>
+<p class="text-xs text-gray-500 mt-1">Pop Star • Cat Lover • Tuna Enthusiast</p>
+</div>
+<div class="w-full space-y-3">
+<div class="bg-gray-50 hover:bg-gray-100 transition-colors border border-gray-200 text-gray-800 py-3 px-4 rounded-xl text-xs font-bold text-center shadow-sm flex items-center justify-between group cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-500 group-hover:scale-110 transition-transform">
+<i class="fab fa-youtube"></i>
+</div>
+<span>Latest Music Video</span>
+<span class="material-symbols-outlined text-gray-400 text-sm">more_horiz</span>
+</div>
+<div class="bg-gray-50 hover:bg-gray-100 transition-colors border border-gray-200 text-gray-800 py-3 px-4 rounded-xl text-xs font-bold text-center shadow-sm flex items-center justify-between group cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-500 group-hover:scale-110 transition-transform">
+<i class="fab fa-spotify"></i>
+</div>
+<span>Stream "Roar"</span>
+<span class="material-symbols-outlined text-gray-400 text-sm">more_horiz</span>
+</div>
+<div class="bg-gray-50 hover:bg-gray-100 transition-colors border border-gray-200 text-gray-800 py-3 px-4 rounded-xl text-xs font-bold text-center shadow-sm flex items-center justify-between group cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-sm">shopping_bag</span>
+</div>
+<span>Buy Merch</span>
+<span class="material-symbols-outlined text-gray-400 text-sm">more_horiz</span>
+</div>
+</div>
+<div class="flex justify-center gap-4 mt-auto pt-6">
+<i class="fab fa-instagram text-gray-400 hover:text-pink-600 text-lg transition-colors cursor-pointer"></i>
+<i class="fab fa-tiktok text-gray-400 hover:text-black text-lg transition-colors cursor-pointer"></i>
+<i class="fab fa-twitter text-gray-400 hover:text-blue-400 text-lg transition-colors cursor-pointer"></i>
+<i class="fas fa-envelope text-gray-400 hover:text-gray-600 text-lg transition-colors cursor-pointer"></i>
+</div>
+<div class="mt-4 flex items-center gap-1 opacity-50">
+<span class="material-symbols-outlined text-gray-400 text-[10px]">pets</span>
+<span class="text-[10px] text-gray-400 font-bold">Catlink</span>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute -right-8 top-32 bg-white dark:bg-surface-dark p-3 rounded-2xl shadow-xl flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
+<div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<div class="text-[10px] text-gray-500 uppercase font-bold">Earnings</div>
+<div class="text-sm font-bold text-gray-800 dark:text-white">$1,240.50</div>
+</div>
+</div>
+<div class="absolute -left-12 bottom-40 bg-white dark:bg-surface-dark p-3 rounded-2xl shadow-xl flex items-center gap-3 animate-bounce" style="animation-duration: 4s; animation-delay: 1s;">
+<div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<div>
+<div class="text-[10px] text-gray-500 uppercase font-bold">Total Views</div>
+<div class="text-sm font-bold text-gray-800 dark:text-white">4.8M</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-10 bg-white dark:bg-surface-dark border-y border-gray-100 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-4 text-center">
+<p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-6">Trusted by 35M+ innovative creators</p>
+<div class="flex flex-wrap justify-center items-center gap-8 lg:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="flex items-center gap-2 font-bold text-xl"><i class="fab fa-aws text-2xl"></i> Amazon</div>
+<div class="flex items-center gap-2 font-bold text-xl"><i class="fab fa-google text-2xl"></i> Google</div>
+<div class="flex items-center gap-2 font-bold text-xl"><i class="fab fa-spotify text-2xl"></i> Spotify</div>
+<div class="flex items-center gap-2 font-bold text-xl"><i class="fab fa-tiktok text-2xl"></i> TikTok</div>
+<div class="flex items-center gap-2 font-bold text-xl"><i class="fab fa-twitch text-2xl"></i> Twitch</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-background-light dark:bg-[#0b1120]">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="text-base text-primary font-bold tracking-wide uppercase mb-2">Features</h2>
+<h3 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">Everything you need to grow.</h3>
+<p class="text-lg text-gray-500 dark:text-gray-400">Simple tools to help you engage with your audience and make money doing what you love.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-white dark:bg-surface-dark rounded-3xl p-8 shadow-xl-soft border border-gray-100 dark:border-gray-800 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+<div class="w-14 h-14 bg-blue-50 dark:bg-blue-900/20 rounded-2xl flex items-center justify-center text-blue-600 dark:text-blue-400 mb-6">
+<span class="material-symbols-outlined text-3xl">palette</span>
+</div>
+<h4 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Customization</h4>
+<p class="text-gray-500 dark:text-gray-400 leading-relaxed">
+                        Design your Catlink to match your brand. Choose from our purrfect themes or create your own with custom backgrounds, buttons, and fonts.
+                    </p>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-3xl p-8 shadow-xl-soft border border-gray-100 dark:border-gray-800 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+<div class="w-14 h-14 bg-purple-50 dark:bg-purple-900/20 rounded-2xl flex items-center justify-center text-purple-600 dark:text-purple-400 mb-6">
+<span class="material-symbols-outlined text-3xl">monitoring</span>
+</div>
+<h4 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Analytics</h4>
+<p class="text-gray-500 dark:text-gray-400 leading-relaxed">
+                        Track your engagement with detailed analytics. See which links are performing best and learn more about your audience.
+                    </p>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-3xl p-8 shadow-xl-soft border border-gray-100 dark:border-gray-800 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+<div class="w-14 h-14 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center text-green-600 dark:text-green-400 mb-6">
+<span class="material-symbols-outlined text-3xl">paid</span>
+</div>
+<h4 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Monetization</h4>
+<p class="text-gray-500 dark:text-gray-400 leading-relaxed">
+                        Sell your products, accept tips, and collect donations directly from your bio link. No transaction fees for a limited time.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 relative overflow-hidden">
+<div class="absolute inset-0 bg-gray-900 dark:bg-indigo-950">
+<div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+</div>
+<div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-primary rounded-full blur-[100px] opacity-50"></div>
+<div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-purple-600 rounded-full blur-[100px] opacity-50"></div>
+<div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+<h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6">Create your Catlink for Free</h2>
+<p class="text-xl text-gray-300 mb-10">Join the world's biggest influencers, creators, publishers and brands.</p>
+<form class="flex flex-col sm:flex-row gap-3 justify-center max-w-lg mx-auto">
+<div class="relative flex-grow">
+<span class="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-400 font-semibold">catlink.bio/</span>
+<input class="block w-full pl-28 pr-4 py-4 border-2 border-transparent focus:border-white rounded-xl bg-white/10 backdrop-blur-md text-white placeholder-gray-400 focus:outline-none focus:ring-0 font-medium transition-colors" placeholder="yourname" type="text"/>
+</div>
+<button class="whitespace-nowrap px-8 py-4 bg-primary hover:bg-primary-dark text-white rounded-xl font-bold text-lg shadow-lg transition-all transform hover:scale-105" type="button">
+                    Get Started
+                </button>
+</form>
+</div>
+</section>
+<footer class="bg-white dark:bg-background-dark pt-16 pb-8 border-t border-gray-200 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
+<div class="col-span-2 lg:col-span-2">
+<div class="flex items-center gap-2 mb-4">
+<div class="w-8 h-8 bg-gradient-to-tr from-purple-500 to-indigo-500 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg">pets</span>
+</div>
+<span class="font-bold text-xl tracking-tight text-gray-900 dark:text-white">Catlink</span>
+</div>
+<p class="text-gray-500 text-sm max-w-xs mb-6">
+                        The simple, free, and beautiful way to link all your content in one place. Made with ❤️ for cats and creators.
+                    </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white transition-all" href="#">
+<i class="fab fa-twitter"></i>
+</a>
+<a class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-500 hover:bg-pink-600 hover:text-white transition-all" href="#">
+<i class="fab fa-instagram"></i>
+</a>
+<a class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-500 hover:bg-black hover:text-white transition-all" href="#">
+<i class="fab fa-tiktok"></i>
+</a>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-gray-900 dark:text-white mb-4">Company</h4>
+<ul class="space-y-2 text-sm text-gray-500">
+<li><a class="hover:text-primary" href="#">About</a></li>
+<li><a class="hover:text-primary" href="#">Careers</a></li>
+<li><a class="hover:text-primary" href="#">Partners</a></li>
+<li><a class="hover:text-primary" href="#">Press</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-gray-900 dark:text-white mb-4">Community</h4>
+<ul class="space-y-2 text-sm text-gray-500">
+<li><a class="hover:text-primary" href="#">Blog</a></li>
+<li><a class="hover:text-primary" href="#">Charities</a></li>
+<li><a class="hover:text-primary" href="#">Help Center</a></li>
+<li><a class="hover:text-primary" href="#">Guidelines</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-gray-900 dark:text-white mb-4">Legal</h4>
+<ul class="space-y-2 text-sm text-gray-500">
+<li><a class="hover:text-primary" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary" href="#">Terms of Service</a></li>
+<li><a class="hover:text-primary" href="#">Cookie Policy</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-200 dark:border-gray-800 pt-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-gray-500">© 2023 Catlink. All rights reserved.</p>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-sm text-gray-500">All systems operational</span>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>

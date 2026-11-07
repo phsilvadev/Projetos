@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BioLink Editor - Social Icons Added</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#6366f1", // Indigo-500 equivalent
+                        "primary-dark": "#4f46e5",
+                        "background-light": "#f3f4f6", // Gray-100
+                        "background-dark": "#0f172a", // Slate-900
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e293b", // Slate-800
+                        "sidebar-dark": "#111827", // Gray-900
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'phone': '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                        'glow': '0 0 20px rgba(99, 102, 241, 0.5)',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #475569;
+        }
+        .app-bg-pattern {
+            background-color: #111827;
+            background-image: radial-gradient(#374151 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-surface-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-sans h-screen flex overflow-hidden selection:bg-primary selection:text-white">
+<div class="hidden lg:flex lg:w-1/2 xl:w-5/12 bg-sidebar-dark relative flex-col justify-between overflow-hidden">
+<div class="absolute inset-0 app-bg-pattern opacity-40"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-sidebar-dark/50 to-sidebar-dark"></div>
+<div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/30 rounded-full blur-3xl mix-blend-screen animate-pulse"></div>
+<div class="absolute bottom-1/3 right-1/4 w-80 h-80 bg-purple-600/20 rounded-full blur-3xl mix-blend-screen"></div>
+<div class="relative z-10 p-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-gradient-to-tr from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center shadow-lg">
+<span class="material-icons-round text-white text-xl">auto_awesome</span>
+</div>
+<span class="text-white font-bold text-xl tracking-tight">SmartBio</span>
+</div>
+</div>
+<div class="relative z-10 flex-1 flex items-center justify-center perspective-[1000px]">
+<div class="relative transform rotate-y-6 rotate-z-2 scale-95 hover:rotate-y-0 hover:rotate-z-0 transition-all duration-700 ease-out shadow-2xl rounded-[45px]">
+<div class="relative w-[300px] h-[600px] bg-black rounded-[40px] shadow-phone border-[8px] border-black overflow-hidden z-0">
+<div class="absolute top-0 w-full h-8 z-20 flex justify-between items-center px-6 pt-2 text-white text-xs font-semibold mix-blend-difference">
+<span>9:41</span>
+<div class="flex gap-1.5 items-center">
+<span class="material-icons-round text-[10px]">signal_cellular_alt</span>
+<span class="material-icons-round text-[10px]">wifi</span>
+<span class="material-icons-round text-[10px] rotate-90">battery_full</span>
+</div>
+</div>
+<div class="absolute top-2 left-1/2 transform -translate-x-1/2 w-20 h-5 bg-black rounded-full z-20"></div>
+<div class="w-full h-full bg-gray-50 relative overflow-hidden text-gray-900 font-sans flex flex-col">
+<div class="relative h-32 w-full overflow-hidden bg-white border-b border-gray-100"></div>
+<div class="relative -mt-10 flex justify-center z-10">
+<div class="w-20 h-20 rounded-full border-4 border-white shadow-lg overflow-hidden bg-gray-200 relative group cursor-pointer">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeFeSw-apJZAHOd-ZWUvTc2365vx8RFlT6RZKJyJFUlUYOdt79yiX5ZG0VyC4VqT2CCt0diz2G5y7iteKDhoNIx-VT9f5cPvo-N8CwXrtEpMug4AIfEWYMWAnx8MJxoZKO9xFXG9kx50tEpG2S0mxdMQREIzyFw1plNyUZ6Qn_8bmkUkhKZgiUYG6iYYjVjqOkz1GBXoo5vrkqYHpjFTDDWZYwNbrqSS3A42Z8xBI7ieYU_krQMo9Z_jlPBuc7yU2bx5ifPD54O1bs"/>
+<div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-icons-round text-white text-sm">edit</span>
+</div>
+</div>
+</div>
+<div class="text-center px-4 mt-3 mb-6">
+<h1 class="text-lg font-bold text-gray-900 tracking-tight flex items-center justify-center gap-1">
+                                PixelMaster <span class="material-icons-round text-blue-500 text-sm">verified</span>
+</h1>
+<p class="text-[11px] text-gray-500 mt-1">Design | Code | Minimalist</p>
+</div>
+<div class="px-5 flex-1 pb-8 overflow-y-auto custom-scrollbar">
+<div class="w-full bg-white rounded-2xl p-4 shadow-sm mb-4 transform hover:scale-[1.02] transition-transform duration-300 cursor-pointer border border-primary ring-2 ring-primary/20">
+<div class="flex justify-center gap-5">
+<a class="text-gray-700 hover:text-primary transition-colors transform hover:-translate-y-1" href="#"><i class="fab fa-twitter text-2xl"></i></a>
+<a class="text-gray-700 hover:text-pink-600 transition-colors transform hover:-translate-y-1" href="#"><i class="fab fa-instagram text-2xl"></i></a>
+<a class="text-gray-700 hover:text-blue-700 transition-colors transform hover:-translate-y-1" href="#"><i class="fab fa-linkedin text-2xl"></i></a>
+<a class="text-gray-700 hover:text-red-600 transition-colors transform hover:-translate-y-1" href="#"><i class="fab fa-youtube text-2xl"></i></a>
+</div>
+</div>
+</div>
+<div class="flex justify-center gap-6 pb-8 opacity-50">
+<div class="w-2 h-2 rounded-full bg-gray-300"></div>
+<div class="w-2 h-2 rounded-full bg-gray-300"></div>
+<div class="w-2 h-2 rounded-full bg-gray-300"></div>
+</div>
+</div>
+</div>
+<div class="absolute -right-12 top-24 bg-surface-dark text-white p-3 pr-4 rounded-l-none rounded-r-2xl shadow-xl flex items-center gap-3 border-l-4 border-primary">
+<div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+<div>
+<div class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Status</div>
+<div class="text-sm font-bold">Draft Mode</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative z-10 p-8 text-white/90">
+<h2 class="text-2xl font-bold mb-1">Live Preview</h2>
+<p class="text-gray-400 font-light text-sm max-w-sm">Changes you make in the editor appear here instantly.</p>
+</div>
+</div>
+<div class="flex-1 flex flex-col p-0 bg-surface-light dark:bg-background-dark overflow-hidden relative">
+<div class="lg:hidden p-6 flex items-center gap-2 border-b border-gray-200 dark:border-gray-800">
+<div class="w-8 h-8 bg-gradient-to-tr from-purple-500 to-indigo-500 rounded-lg flex items-center justify-center shadow-lg">
+<span class="material-icons-round text-white text-sm">auto_awesome</span>
+</div>
+<span class="text-gray-900 dark:text-white font-bold text-lg">SmartBio</span>
+</div>
+<header class="px-6 py-4 lg:px-12 lg:py-8 border-b border-gray-200 dark:border-gray-800 flex justify-between items-center bg-white dark:bg-surface-dark sticky top-0 z-20">
+<div>
+<h2 class="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white">Editor</h2>
+<div class="flex items-center gap-2 text-xs text-gray-500 mt-1">
+<span>My Page</span>
+<span class="material-icons-round text-[10px]">chevron_right</span>
+<span class="text-primary font-medium">Blocks</span>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">
+<span class="material-icons-round text-base">visibility</span>
+                    Preview
+                </button>
+<button class="flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-bold text-white bg-gray-900 dark:bg-primary hover:bg-gray-800 dark:hover:bg-primary-dark transition-all shadow-lg shadow-primary/20">
+                    Share
+                    <span class="material-icons-round text-sm">ios_share</span>
+</button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-6 lg:p-12 relative">
+<div class="w-full max-w-2xl mx-auto">
+<div class="flex gap-8 border-b border-gray-200 dark:border-gray-700 mb-8 sticky top-0 bg-surface-light dark:bg-background-dark z-10 pt-2">
+<button class="pb-3 border-b-2 border-primary text-primary font-semibold text-sm flex items-center gap-2">
+<span class="material-icons-round text-base">layers</span> Blocks
+                    </button>
+<button class="pb-3 border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors text-sm font-medium flex items-center gap-2">
+<span class="material-icons-round text-base">palette</span> Appearance
+                    </button>
+<button class="pb-3 border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors text-sm font-medium flex items-center gap-2">
+<span class="material-icons-round text-base">settings</span> Settings
+                    </button>
+</div>
+<div class="animate-in fade-in slide-in-from-bottom-4 duration-500">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-pink-100 dark:bg-pink-900/30 text-pink-500 flex items-center justify-center">
+<span class="material-icons-round text-xl">share</span>
+</div>
+<div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Social Icons</h3>
+<p class="text-xs text-gray-500 dark:text-gray-400">Manage your social media links</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors" title="Toggle visibility">
+<span class="material-icons-round text-xl">visibility</span>
+</button>
+<button class="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors" title="Delete block">
+<span class="material-icons-round text-xl">delete</span>
+</button>
+</div>
+</div>
+<div class="space-y-6">
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-2xl shadow-sm overflow-hidden">
+<div class="p-5 border-b border-gray-100 dark:border-gray-700">
+<label class="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-3">Icon Style</label>
+<div class="grid grid-cols-3 gap-3">
+<button class="flex flex-col items-center justify-center p-3 rounded-xl border-2 border-primary bg-primary/5 text-primary">
+<div class="flex gap-2 mb-2">
+<i class="fab fa-twitter"></i>
+<i class="fab fa-instagram"></i>
+</div>
+<span class="text-xs font-medium">Original</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 rounded-xl border border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+<div class="flex gap-2 mb-2 text-gray-900 dark:text-white">
+<i class="fab fa-twitter"></i>
+<i class="fab fa-instagram"></i>
+</div>
+<span class="text-xs font-medium">Black</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 rounded-xl border border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+<div class="flex gap-2 mb-2 text-gray-900 dark:text-white border border-gray-300 rounded px-1">
+<i class="fab fa-twitter"></i>
+</div>
+<span class="text-xs font-medium">Outlined</span>
+</button>
+</div>
+</div>
+<div class="p-5">
+<label class="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-4">Active Icons</label>
+<div class="space-y-3">
+<div class="group flex items-center gap-3 bg-gray-50 dark:bg-slate-800/50 p-3 rounded-xl border border-transparent hover:border-gray-300 dark:hover:border-gray-600 transition-colors">
+<div class="cursor-grab text-gray-400 hover:text-gray-600">
+<span class="material-icons-round text-xl">drag_indicator</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-white dark:bg-slate-700 flex items-center justify-center shadow-sm text-blue-400 shrink-0">
+<i class="fab fa-twitter text-lg"></i>
+</div>
+<div class="flex-1">
+<input class="w-full bg-transparent text-sm text-gray-900 dark:text-white placeholder-gray-400 border-none p-0 focus:ring-0" placeholder="https://twitter.com/username" type="text" value="https://twitter.com/pixelmaster"/>
+<div class="text-[10px] text-gray-400 font-medium uppercase tracking-wide mt-0.5">Twitter</div>
+</div>
+<button class="text-gray-400 hover:text-red-500 p-1 rounded-md transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-icons-round text-lg">close</span>
+</button>
+</div>
+<div class="group flex items-center gap-3 bg-gray-50 dark:bg-slate-800/50 p-3 rounded-xl border border-transparent hover:border-gray-300 dark:hover:border-gray-600 transition-colors">
+<div class="cursor-grab text-gray-400 hover:text-gray-600">
+<span class="material-icons-round text-xl">drag_indicator</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-white dark:bg-slate-700 flex items-center justify-center shadow-sm text-pink-600 shrink-0">
+<i class="fab fa-instagram text-lg"></i>
+</div>
+<div class="flex-1">
+<input class="w-full bg-transparent text-sm text-gray-900 dark:text-white placeholder-gray-400 border-none p-0 focus:ring-0" placeholder="https://instagram.com/username" type="text" value="https://instagram.com/pixelmaster"/>
+<div class="text-[10px] text-gray-400 font-medium uppercase tracking-wide mt-0.5">Instagram</div>
+</div>
+<button class="text-gray-400 hover:text-red-500 p-1 rounded-md transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-icons-round text-lg">close</span>
+</button>
+</div>
+<div class="group flex items-center gap-3 bg-gray-50 dark:bg-slate-800/50 p-3 rounded-xl border border-transparent hover:border-gray-300 dark:hover:border-gray-600 transition-colors">
+<div class="cursor-grab text-gray-400 hover:text-gray-600">
+<span class="material-icons-round text-xl">drag_indicator</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-white dark:bg-slate-700 flex items-center justify-center shadow-sm text-blue-700 shrink-0">
+<i class="fab fa-linkedin text-lg"></i>
+</div>
+<div class="flex-1">
+<input class="w-full bg-transparent text-sm text-gray-900 dark:text-white placeholder-gray-400 border-none p-0 focus:ring-0" placeholder="https://linkedin.com/in/username" type="text" value="https://linkedin.com/in/pixelmaster"/>
+<div class="text-[10px] text-gray-400 font-medium uppercase tracking-wide mt-0.5">LinkedIn</div>
+</div>
+<button class="text-gray-400 hover:text-red-500 p-1 rounded-md transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-icons-round text-lg">close</span>
+</button>
+</div>
+<div class="group flex items-center gap-3 bg-gray-50 dark:bg-slate-800/50 p-3 rounded-xl border border-transparent hover:border-gray-300 dark:hover:border-gray-600 transition-colors">
+<div class="cursor-grab text-gray-400 hover:text-gray-600">
+<span class="material-icons-round text-xl">drag_indicator</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-white dark:bg-slate-700 flex items-center justify-center shadow-sm text-red-600 shrink-0">
+<i class="fab fa-youtube text-lg"></i>
+</div>
+<div class="flex-1">
+<input class="w-full bg-transparent text-sm text-gray-900 dark:text-white placeholder-gray-400 border-none p-0 focus:ring-0" placeholder="https://youtube.com/c/channel" type="text" value="https://youtube.com/c/pixelmaster"/>
+<div class="text-[10px] text-gray-400 font-medium uppercase tracking-wide mt-0.5">YouTube</div>
+</div>
+<button class="text-gray-400 hover:text-red-500 p-1 rounded-md transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-icons-round text-lg">close</span>
+</button>
+</div>
+</div>
+<button class="mt-4 w-full py-3 border-2 border-dashed border-gray-200 dark:border-gray-700 rounded-xl text-gray-500 dark:text-gray-400 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all text-sm font-semibold flex items-center justify-center gap-2 group">
+<span class="material-icons-round group-hover:scale-110 transition-transform">add_circle</span>
+                                Add Icon
+                            </button>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-2xl shadow-sm p-5">
+<div class="flex items-center justify-between mb-4">
+<label class="text-sm font-semibold text-gray-700 dark:text-gray-200">Icon Size</label>
+<span class="text-xs text-gray-500 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Medium</span>
+</div>
+<input class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary" max="100" min="0" type="range" value="50"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-20 hidden lg:flex items-center justify-center gap-6 text-xs text-gray-400 absolute bottom-6 w-full">
+<a class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors" href="#">Help Center</a>
+<span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+<a class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors" href="#">Shortcuts</a>
+</div>
+</div>
+</body></html>

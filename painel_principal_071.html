@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BioLink Analytics Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#6366f1", // Indigo-500
+                        "primary-dark": "#4f46e5",
+                        "background-light": "#f3f4f6",
+                        "background-dark": "#0f172a",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e293b",
+                        "sidebar-dark": "#111827",
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #475569;
+        }
+        .app-bg-pattern {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .dark .app-bg-pattern {
+            background-color: #0f172a;
+            background-image: radial-gradient(#334155 1px, transparent 1px);
+        }
+        .chart-gradient {
+            background: linear-gradient(180deg, rgba(99, 102, 241, 0.2) 0%, rgba(99, 102, 241, 0) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-sans h-screen flex overflow-hidden selection:bg-primary selection:text-white">
+<aside class="w-16 bg-sidebar-dark flex flex-col items-center py-6 shrink-0 z-20">
+<div class="mb-8">
+<div class="w-10 h-10 bg-gradient-to-tr from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center shadow-lg">
+<span class="material-icons-round text-white text-xl">auto_awesome</span>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-6 w-full items-center">
+<button class="w-10 h-10 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 flex items-center justify-center transition-colors">
+<span class="material-icons-round text-xl">add</span>
+</button>
+<button class="w-10 h-10 rounded-lg bg-gray-800 text-white flex items-center justify-center shadow-md shadow-indigo-500/20">
+<span class="material-icons-round text-xl">dashboard</span>
+</button>
+<button class="w-10 h-10 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 flex items-center justify-center transition-colors">
+<span class="material-icons-round text-xl">image</span>
+</button>
+<button class="w-10 h-10 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 flex items-center justify-center transition-colors">
+<span class="material-icons-round text-xl">layers</span>
+</button>
+</nav>
+<div class="flex flex-col gap-6 mt-auto">
+<button class="text-gray-400 hover:text-white transition-colors">
+<span class="material-icons-round text-xl">settings</span>
+</button>
+<button class="text-gray-400 hover:text-white transition-colors">
+<span class="material-icons-round text-xl">help_outline</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-gray-600 overflow-hidden border-2 border-gray-700">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtaV1IJwokVYf4tIWvqT0wRsKXzPXupi6kKG30GeFyphjd-Q6ce4jTZPUZZ8Y42uR3Z0oUifebnnX5CpGSehBlORCx9Zc8V-2rIFTX_POwd5aXbZ3d3gCLf0Ween9SD-lbahMg-5xdtOS0HnlmPALxFaL9m4TlqOwI7TCZdwyl4wwmxnppIrHOTaRcCFQ_8OOFIZ6ag0WKXvYlB9pP57c62myDlmA1oRfaWrr1uYnXx8ywkCRyXXCy-LZzEvime5BAVNe66rl5PBBu"/>
+</div>
+</div>
+</aside>
+<aside class="w-72 bg-surface-light dark:bg-surface-dark border-r border-gray-200 dark:border-gray-700 flex flex-col shrink-0 z-10 hidden lg:flex">
+<div class="p-6 h-full flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-bold text-lg dark:text-white">Traffic Sources</h2>
+<button class="text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-icons-round text-sm">refresh</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar -mr-2 pr-2">
+<div class="space-y-4">
+<div class="group">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-pink-100 dark:bg-pink-900/30 text-pink-500 flex items-center justify-center">
+<i class="fab fa-instagram text-sm"></i>
+</div>
+<span class="text-sm font-medium text-gray-700 dark:text-gray-300">Instagram</span>
+</div>
+<span class="text-sm font-bold text-gray-800 dark:text-white">45%</span>
+</div>
+<div class="h-1.5 w-full bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-pink-500 w-[45%] rounded-full"></div>
+</div>
+</div>
+<div class="group">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center">
+<i class="fab fa-linkedin-in text-sm"></i>
+</div>
+<span class="text-sm font-medium text-gray-700 dark:text-gray-300">LinkedIn</span>
+</div>
+<span class="text-sm font-bold text-gray-800 dark:text-white">28%</span>
+</div>
+<div class="h-1.5 w-full bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-blue-600 w-[28%] rounded-full"></div>
+</div>
+</div>
+<div class="group">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-black dark:bg-gray-700 text-white flex items-center justify-center">
+<i class="fab fa-tiktok text-sm"></i>
+</div>
+<span class="text-sm font-medium text-gray-700 dark:text-gray-300">TikTok</span>
+</div>
+<span class="text-sm font-bold text-gray-800 dark:text-white">15%</span>
+</div>
+<div class="h-1.5 w-full bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-black w-[15%] rounded-full"></div>
+</div>
+</div>
+<div class="group">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-500 flex items-center justify-center">
+<span class="material-icons-round text-sm">link</span>
+</div>
+<span class="text-sm font-medium text-gray-700 dark:text-gray-300">Direct</span>
+</div>
+<span class="text-sm font-bold text-gray-800 dark:text-white">12%</span>
+</div>
+<div class="h-1.5 w-full bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500 w-[12%] rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="mt-8">
+<h3 class="font-bold text-gray-800 dark:text-white text-sm mb-4">Referrers</h3>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 pb-2 border-b border-gray-100 dark:border-gray-800">
+<span>linktr.ee/competitor</span>
+<span class="font-medium">204</span>
+</div>
+<div class="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 pb-2 border-b border-gray-100 dark:border-gray-800">
+<span>google.com</span>
+<span class="font-medium">156</span>
+</div>
+<div class="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 pb-2 border-b border-gray-100 dark:border-gray-800">
+<span>rockagency.com</span>
+<span class="font-medium">89</span>
+</div>
+</div>
+</div>
+</div>
+<button class="mt-auto w-full py-2.5 bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-xl text-xs font-bold border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                View Full Report
+            </button>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-screen min-w-0 bg-background-light dark:bg-background-dark">
+<header class="h-16 bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-6 shrink-0 z-10">
+<div class="flex items-center gap-4">
+<h1 class="text-lg font-bold text-gray-800 dark:text-white">Analytics Overview</h1>
+<div class="h-4 w-px bg-gray-300 dark:bg-gray-600 mx-2"></div>
+<div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    Live Data
+                </div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex bg-gray-100 dark:bg-gray-800 rounded-full p-1">
+<button class="p-1.5 bg-white dark:bg-gray-600 rounded-full shadow-sm text-yellow-500">
+<span class="material-icons-round text-sm">wb_sunny</span>
+</button>
+<button class="p-1.5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+<span class="material-icons-round text-sm">dark_mode</span>
+</button>
+</div>
+<button class="bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-full text-sm font-bold flex items-center gap-2 shadow-lg shadow-primary/30 transition-all">
+<span class="material-icons-round text-sm">download</span>
+                    Export PDF
+                </button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-6 md:p-8 app-bg-pattern custom-scrollbar">
+<div class="max-w-5xl mx-auto space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-light dark:bg-surface-dark p-5 rounded-2xl shadow-card border border-gray-200 dark:border-gray-700 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Total Views</p>
+<h3 class="text-2xl font-bold text-gray-900 dark:text-white mt-1">24,593</h3>
+</div>
+<div class="w-10 h-10 rounded-full bg-indigo-50 dark:bg-indigo-900/20 text-indigo-500 flex items-center justify-center">
+<span class="material-icons-round">visibility</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="bg-green-100 dark:bg-green-900/30 text-green-600 text-xs font-bold px-2 py-0.5 rounded-full flex items-center">
+<span class="material-icons-round text-[10px] mr-0.5">trending_up</span> 12.5%
+                            </span>
+<span class="text-xs text-gray-400">vs last 30 days</span>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-5 rounded-2xl shadow-card border border-gray-200 dark:border-gray-700 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Total Clicks</p>
+<h3 class="text-2xl font-bold text-gray-900 dark:text-white mt-1">8,402</h3>
+</div>
+<div class="w-10 h-10 rounded-full bg-purple-50 dark:bg-purple-900/20 text-purple-500 flex items-center justify-center">
+<span class="material-icons-round">touch_app</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="bg-green-100 dark:bg-green-900/30 text-green-600 text-xs font-bold px-2 py-0.5 rounded-full flex items-center">
+<span class="material-icons-round text-[10px] mr-0.5">trending_up</span> 5.2%
+                            </span>
+<span class="text-xs text-gray-400">vs last 30 days</span>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-5 rounded-2xl shadow-card border border-gray-200 dark:border-gray-700 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Click Through Rate</p>
+<h3 class="text-2xl font-bold text-gray-900 dark:text-white mt-1">34.2%</h3>
+</div>
+<div class="w-10 h-10 rounded-full bg-teal-50 dark:bg-teal-900/20 text-teal-500 flex items-center justify-center">
+<span class="material-icons-round">percent</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="bg-red-100 dark:bg-red-900/30 text-red-500 text-xs font-bold px-2 py-0.5 rounded-full flex items-center">
+<span class="material-icons-round text-[10px] mr-0.5">trending_down</span> 2.1%
+                            </span>
+<span class="text-xs text-gray-400">vs last 30 days</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-6 rounded-2xl shadow-card border border-gray-200 dark:border-gray-700">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-bold text-gray-900 dark:text-white">Performance Overview</h3>
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="text-xs text-gray-600 dark:text-gray-300">Views</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+<div class="w-2 h-2 rounded-full bg-purple-400"></div>
+<span class="text-xs text-gray-600 dark:text-gray-300">Clicks</span>
+</div>
+</div>
+</div>
+<div class="relative h-64 w-full">
+<div class="absolute inset-0 flex flex-col justify-between text-xs text-gray-400 pointer-events-none">
+<div class="w-full border-b border-gray-100 dark:border-gray-800 border-dashed pb-1">30k</div>
+<div class="w-full border-b border-gray-100 dark:border-gray-800 border-dashed pb-1">20k</div>
+<div class="w-full border-b border-gray-100 dark:border-gray-800 border-dashed pb-1">10k</div>
+<div class="w-full border-b border-gray-100 dark:border-gray-800 border-dashed pb-1">0</div>
+</div>
+<svg class="absolute inset-0 h-full w-full pt-4" preserveAspectRatio="none" viewBox="0 0 100 40">
+<defs>
+<linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#6366f1" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#6366f1" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+<path d="M0,35 Q10,30 20,32 T40,20 T60,25 T80,10 T100,15 L100,40 L0,40 Z" fill="url(#gradient)" stroke="none"></path>
+<path d="M0,35 Q10,30 20,32 T40,20 T60,25 T80,10 T100,15" fill="none" stroke="#6366f1" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
+<circle cx="20" cy="32" fill="#fff" r="1" stroke="#6366f1" stroke-width="0.5"></circle>
+<circle cx="60" cy="25" fill="#fff" r="1" stroke="#6366f1" stroke-width="0.5"></circle>
+<circle cx="80" cy="10" fill="#fff" r="1" stroke="#6366f1" stroke-width="0.5"></circle>
+</svg>
+</div>
+<div class="flex justify-between mt-2 text-xs text-gray-400 px-1">
+<span>Mon</span>
+<span>Tue</span>
+<span>Wed</span>
+<span>Thu</span>
+<span>Fri</span>
+<span>Sat</span>
+<span>Sun</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 bg-surface-light dark:bg-surface-dark rounded-2xl shadow-card border border-gray-200 dark:border-gray-700 overflow-hidden">
+<div class="p-5 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center">
+<h3 class="font-bold text-gray-900 dark:text-white">Top Performing Links</h3>
+<button class="text-primary text-xs font-bold hover:underline">View All</button>
+</div>
+<div class="p-0">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-xs text-gray-500 dark:text-gray-400 border-b border-gray-100 dark:border-gray-800">
+<th class="p-4 font-medium">Link Name</th>
+<th class="p-4 font-medium text-right">Clicks</th>
+<th class="p-4 font-medium text-right">CTR</th>
+<th class="p-4 font-medium w-32">Performance</th>
+</tr>
+</thead>
+<tbody class="text-sm">
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+<td class="p-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-gray-900 text-white flex items-center justify-center">
+<span class="material-icons-round text-sm">public</span>
+</div>
+<span class="font-medium text-gray-800 dark:text-gray-200">Visit our website</span>
+</td>
+<td class="p-4 text-right font-bold text-gray-700 dark:text-gray-300">1,204</td>
+<td class="p-4 text-right text-gray-500">42%</td>
+<td class="p-4">
+<div class="h-1.5 w-full bg-gray-100 dark:bg-gray-700 rounded-full">
+<div class="h-full bg-primary w-[85%] rounded-full"></div>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+<td class="p-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-pink-500 text-white flex items-center justify-center">
+<i class="fab fa-instagram text-sm"></i>
+</div>
+<span class="font-medium text-gray-800 dark:text-gray-200">Instagram Profile</span>
+</td>
+<td class="p-4 text-right font-bold text-gray-700 dark:text-gray-300">845</td>
+<td class="p-4 text-right text-gray-500">28%</td>
+<td class="p-4">
+<div class="h-1.5 w-full bg-gray-100 dark:bg-gray-700 rounded-full">
+<div class="h-full bg-pink-500 w-[60%] rounded-full"></div>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+<td class="p-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-red-600 text-white flex items-center justify-center">
+<i class="fab fa-youtube text-sm"></i>
+</div>
+<span class="font-medium text-gray-800 dark:text-gray-200">Latest Video</span>
+</td>
+<td class="p-4 text-right font-bold text-gray-700 dark:text-gray-300">512</td>
+<td class="p-4 text-right text-gray-500">15%</td>
+<td class="p-4">
+<div class="h-1.5 w-full bg-gray-100 dark:bg-gray-700 rounded-full">
+<div class="h-full bg-red-500 w-[35%] rounded-full"></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl shadow-card border border-gray-200 dark:border-gray-700 p-5 flex flex-col">
+<h3 class="font-bold text-gray-900 dark:text-white mb-6">Device Breakdown</h3>
+<div class="flex-1 flex flex-col items-center justify-center relative mb-6">
+<div class="w-40 h-40 rounded-full border-[12px] border-primary border-t-purple-400 border-r-indigo-300 relative transform -rotate-45"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-3xl font-bold text-gray-800 dark:text-white">68%</span>
+<span class="text-xs text-gray-500 uppercase">Mobile</span>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-sm text-gray-600 dark:text-gray-300">Mobile</span>
+</div>
+<span class="text-sm font-bold text-gray-800 dark:text-white">68%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-purple-400"></span>
+<span class="text-sm text-gray-600 dark:text-gray-300">Desktop</span>
+</div>
+<span class="text-sm font-bold text-gray-800 dark:text-white">25%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-indigo-300"></span>
+<span class="text-sm text-gray-600 dark:text-gray-300">Tablet</span>
+</div>
+<span class="text-sm font-bold text-gray-800 dark:text-white">7%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<aside class="w-80 bg-surface-light dark:bg-surface-dark border-l border-gray-200 dark:border-gray-700 flex flex-col shrink-0 z-10 hidden xl:flex overflow-y-auto custom-scrollbar">
+<div class="p-6">
+<div class="bg-gray-100 dark:bg-gray-800 p-1 rounded-full flex text-sm font-medium mb-8">
+<button class="flex-1 py-1.5 rounded-full text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-all">Design</button>
+<button class="flex-1 py-1.5 rounded-full bg-white dark:bg-gray-600 shadow-sm text-gray-800 dark:text-white transition-all font-bold">Analytics</button>
+<button class="flex-1 py-1.5 rounded-full text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-all">Settings</button>
+</div>
+<div class="mb-8">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-icons-round text-primary text-sm">calendar_today</span>
+<h3 class="font-bold text-gray-800 dark:text-white text-sm">Date Range</h3>
+</div>
+<div class="relative group cursor-pointer">
+<div class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-3 flex justify-between items-center shadow-sm hover:border-primary transition-colors">
+<span class="text-sm font-medium text-gray-700 dark:text-gray-200">Last 30 Days</span>
+<span class="material-icons-round text-gray-400">expand_more</span>
+</div>
+<div class="hidden group-hover:block absolute top-full left-0 w-full mt-1 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 z-20 py-1">
+<div class="px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm cursor-pointer">Last 7 Days</div>
+<div class="px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm cursor-pointer bg-primary/5 text-primary font-bold">Last 30 Days</div>
+<div class="px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm cursor-pointer">Last 3 Months</div>
+<div class="px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm cursor-pointer">Year to Date</div>
+</div>
+</div>
+</div>
+<hr class="border-gray-200 dark:border-gray-700 mb-6"/>
+<div class="mb-8">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-icons-round text-primary text-sm">public</span>
+<h3 class="font-bold text-gray-800 dark:text-white text-sm">Top Locations</h3>
+</div>
+<button class="text-primary text-xs font-bold">More</button>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="text-xl">🇺🇸</span>
+<div class="flex-1">
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-gray-700 dark:text-gray-300">United States</span>
+<span class="font-bold">42%</span>
+</div>
+<div class="h-1.5 w-full bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[42%] rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-xl">🇧🇷</span>
+<div class="flex-1">
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-gray-700 dark:text-gray-300">Brazil</span>
+<span class="font-bold">24%</span>
+</div>
+<div class="h-1.5 w-full bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[24%] rounded-full opacity-80"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-xl">🇬🇧</span>
+<div class="flex-1">
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-gray-700 dark:text-gray-300">United Kingdom</span>
+<span class="font-bold">12%</span>
+</div>
+<div class="h-1.5 w-full bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[12%] rounded-full opacity-60"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-xl">🇩🇪</span>
+<div class="flex-1">
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-gray-700 dark:text-gray-300">Germany</span>
+<span class="font-bold">8%</span>
+</div>
+<div class="h-1.5 w-full bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[8%] rounded-full opacity-40"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="border-gray-200 dark:border-gray-700 mb-6"/>
+<div>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-icons-round text-primary text-sm">insights</span>
+<h3 class="font-bold text-gray-800 dark:text-white text-sm">Advanced Tracking</h3>
+</div>
+<div class="bg-indigo-50 dark:bg-indigo-900/10 rounded-xl p-4 border border-indigo-100 dark:border-indigo-900/30">
+<div class="flex gap-3 mb-2">
+<div class="bg-white dark:bg-gray-800 p-2 rounded-lg shadow-sm">
+<span class="material-icons-round text-indigo-500">api</span>
+</div>
+<div>
+<h4 class="font-bold text-sm text-gray-900 dark:text-white">Facebook Pixel</h4>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Tracking ID: 4829...23</p>
+</div>
+</div>
+<button class="w-full mt-2 text-xs font-bold text-primary hover:text-primary-dark transition-colors">Manage Pixels &amp; UTMs</button>
+</div>
+</div>
+</div>
+</aside>
+
+</body></html>

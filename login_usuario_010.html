@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BioLink Editor Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#6366f1", // Indigo-500
+                        "primary-dark": "#4f46e5",
+                        "background-light": "#f3f4f6", // Gray-100
+                        "background-dark": "#0f172a", // Slate-900
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e293b", // Slate-800
+                        "sidebar-dark": "#111827", // Gray-900
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                        'input': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        .app-bg-pattern {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .dark .app-bg-pattern {
+            background-color: #0f172a;
+            background-image: radial-gradient(#334155 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-sans h-screen flex flex-col items-center justify-center overflow-hidden selection:bg-primary selection:text-white app-bg-pattern">
+<div class="w-full max-w-md px-6 py-12 lg:px-8 bg-surface-light dark:bg-surface-dark rounded-2xl shadow-card border border-gray-200 dark:border-gray-700 relative z-10">
+<div class="sm:mx-auto sm:w-full sm:max-w-sm mb-8">
+<div class="flex justify-center mb-6">
+<div class="w-12 h-12 bg-gradient-to-tr from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center shadow-lg">
+<span class="material-icons-round text-white text-2xl">auto_awesome</span>
+</div>
+</div>
+<h2 class="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-white">Sign in to your account</h2>
+<p class="mt-2 text-center text-sm text-gray-500 dark:text-gray-400">
+                Welcome back to SmartBio Editor
+            </p>
+</div>
+<div class="sm:mx-auto sm:w-full sm:max-w-sm">
+<form action="#" class="space-y-6" method="POST">
+<div>
+<label class="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-200" for="email">Email address</label>
+<div class="mt-2 relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+<span class="material-icons-round text-lg">mail</span>
+</div>
+<input autocomplete="email" class="block w-full rounded-xl border-0 py-2.5 pl-10 text-gray-900 shadow-input ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 dark:bg-gray-800 dark:ring-gray-700 dark:text-white dark:placeholder-gray-500" id="email" name="email" required="" type="email"/>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between">
+<label class="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-200" for="password">Password</label>
+<div class="text-sm">
+<a class="font-semibold text-primary hover:text-primary-dark transition-colors" href="#">Forgot password?</a>
+</div>
+</div>
+<div class="mt-2 relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+<span class="material-icons-round text-lg">lock</span>
+</div>
+<input autocomplete="current-password" class="block w-full rounded-xl border-0 py-2.5 pl-10 text-gray-900 shadow-input ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 dark:bg-gray-800 dark:ring-gray-700 dark:text-white dark:placeholder-gray-500" id="password" name="password" required="" type="password"/>
+</div>
+</div>
+<div>
+<button class="flex w-full justify-center rounded-xl bg-primary px-3 py-2.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all transform active:scale-[0.98]" type="submit">Sign in</button>
+</div>
+</form>
+<div class="mt-8">
+<div class="relative">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-gray-200 dark:border-gray-700"></div>
+</div>
+<div class="relative flex justify-center text-sm font-medium leading-6">
+<span class="bg-surface-light dark:bg-surface-dark px-6 text-gray-500 dark:text-gray-400">Or continue with</span>
+</div>
+</div>
+<div class="mt-6 grid grid-cols-2 gap-4">
+<a class="flex w-full items-center justify-center gap-3 rounded-xl bg-white dark:bg-gray-800 px-3 py-2 text-sm font-semibold text-gray-900 dark:text-gray-200 shadow-input ring-1 ring-inset ring-gray-300 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 focus-visible:ring-transparent transition-colors" href="#">
+<svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 24 24">
+<path d="M12.0003 20.45c4.6667 0 8.4503-3.7836 8.4503-8.4503 0-4.6667-3.7836-8.4503-8.4503-8.4503-4.6667 0-8.4503 3.7836-8.4503 8.4503 0 4.6667 3.7836 8.4503 8.4503 8.4503z" fill="#fff" stroke="#000" stroke-width="0"></path>
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+<span class="text-sm font-semibold leading-6">Google</span>
+</a>
+<a class="flex w-full items-center justify-center gap-3 rounded-xl bg-black px-3 py-2 text-sm font-semibold text-white shadow-input ring-1 ring-inset ring-gray-900 hover:bg-gray-800 focus-visible:ring-transparent transition-colors" href="#">
+<svg aria-hidden="true" class="h-5 w-5 fill-current" viewBox="0 0 20 20">
+<path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+</svg>
+<span class="text-sm font-semibold leading-6">Twitter</span>
+</a>
+</div>
+</div>
+<p class="mt-10 text-center text-sm text-gray-500 dark:text-gray-400">
+                Not a member?
+                <a class="font-semibold leading-6 text-primary hover:text-primary-dark transition-colors" href="#">Start a 14 day free trial</a>
+</p>
+</div>
+</div>
+<div class="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+<div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-purple-500/10 rounded-full blur-3xl"></div>
+<div class="absolute top-[40%] right-[10%] w-[30%] h-[30%] bg-primary/10 rounded-full blur-3xl"></div>
+<div class="absolute bottom-[-10%] left-[20%] w-[35%] h-[35%] bg-blue-500/10 rounded-full blur-3xl"></div>
+</div>
+
+</body></html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BioLink Editor - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#6366f1", // Indigo-500 equivalent from screenshot
+                        "primary-dark": "#4f46e5",
+                        "background-light": "#f3f4f6", // Gray-100
+                        "background-dark": "#0f172a", // Slate-900
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e293b", // Slate-800
+                        "sidebar-dark": "#111827", // Gray-900
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'phone': '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #475569;
+        }
+        .phone-frame-gradient {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+        }
+        .app-bg-pattern {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .dark .app-bg-pattern {
+            background-color: #0f172a;
+            background-image: radial-gradient(#334155 1px, transparent 1px);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-sans h-screen w-full flex items-center justify-center app-bg-pattern p-4 sm:p-6 lg:p-8">
+<div class="w-full max-w-6xl bg-surface-light dark:bg-surface-dark rounded-[32px] shadow-2xl overflow-hidden flex min-h-[600px] lg:min-h-[750px] border border-gray-100 dark:border-gray-700">
+<div class="hidden lg:flex w-1/2 bg-gray-900 relative overflow-hidden items-center justify-center group">
+<div class="absolute inset-0 bg-gradient-to-br from-indigo-600 via-primary to-purple-800 opacity-90 z-0"></div>
+<div class="absolute top-[-20%] left-[-20%] w-[80%] h-[80%] bg-blue-500 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+<div class="absolute bottom-[-20%] right-[-20%] w-[80%] h-[80%] bg-pink-500 rounded-full blur-3xl opacity-30 animate-pulse" style="animation-delay: 1s;"></div>
+<div class="absolute top-12 left-12 right-12 z-20">
+<div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-white/90 text-xs font-medium border border-white/20 mb-6">
+<span class="material-icons-round text-sm">stars</span>
+                    #1 Bio Link Tool
+                </div>
+<h2 class="text-4xl font-bold text-white mb-4 leading-tight">Create your digital <br/>identity in minutes.</h2>
+<p class="text-indigo-100 text-lg font-light leading-relaxed opacity-90">Join thousands of creators managing their online presence with one simple link.</p>
+</div>
+<div class="transform scale-90 translate-y-24 translate-x-12 rotate-[-5deg] group-hover:rotate-0 group-hover:translate-x-0 group-hover:translate-y-16 transition-all duration-700 ease-out z-10 shadow-2xl">
+<div class="relative w-[320px] h-[640px] bg-black rounded-[40px] shadow-phone border-[8px] border-black overflow-hidden z-0">
+<div class="absolute top-0 w-full h-8 z-20 flex justify-between items-center px-6 pt-2 text-white text-xs font-semibold">
+<span>9:41</span>
+<div class="flex gap-1.5 items-center">
+<span class="material-icons-round text-[10px]">signal_cellular_alt</span>
+<span class="material-icons-round text-[10px]">wifi</span>
+<span class="material-icons-round text-[10px] rotate-90">battery_full</span>
+</div>
+</div>
+<div class="absolute top-2 left-1/2 transform -translate-x-1/2 w-20 h-5 bg-black rounded-full z-20"></div>
+<div class="w-full h-full bg-white relative overflow-hidden">
+<div class="relative h-40 w-full overflow-hidden bg-white">
+<div class="absolute inset-0 bg-gradient-to-tr from-cyan-900 via-indigo-900 to-purple-800"></div>
+<div class="absolute top-0 left-0 w-full px-4 flex justify-between items-center z-10 text-white mt-8">
+<div class="flex items-center gap-1 font-bold text-xs opacity-80">
+<span class="material-icons-round text-sm">auto_awesome</span> SmartBio
+                                </div>
+</div>
+<div class="absolute bottom-[-1px] left-0 w-full overflow-hidden leading-[0]">
+<svg class="relative block w-[calc(140%+1.3px)] h-[40px] fill-white" preserveAspectRatio="none" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
+<path d="M600,112.77C268.63,112.77,0,65.52,0,7.23V120H1200V7.23C1200,65.52,931.37,112.77,600,112.77Z"></path>
+</svg>
+</div>
+</div>
+<div class="relative -mt-14 flex justify-center z-10">
+<div class="w-20 h-20 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-200">
+<img alt="Profile Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeFeSw-apJZAHOd-ZWUvTc2365vx8RFlT6RZKJyJFUlUYOdt79yiX5ZG0VyC4VqT2CCt0diz2G5y7iteKDhoNIx-VT9f5cPvo-N8CwXrtEpMug4AIfEWYMWAnx8MJxoZKO9xFXG9kx50tEpG2S0mxdMQREIzyFw1plNyUZ6Qn_8bmkUkhKZgiUYG6iYYjVjqOkz1GBXoo5vrkqYHpjFTDDWZYwNbrqSS3A42Z8xBI7ieYU_krQMo9Z_jlPBuc7yU2bx5ifPD54O1bs"/>
+</div>
+</div>
+<div class="text-center px-6 mt-2 mb-6">
+<h1 class="text-lg font-bold text-gray-900 mb-1">Rock Agency</h1>
+<p class="text-[10px] text-gray-500 leading-relaxed max-w-[200px] mx-auto">
+                                Digital agency specializing in products, commerce, and SaaS websites.
+                            </p>
+</div>
+<div class="px-4 space-y-3">
+<a class="block w-full bg-gray-900 text-white py-2.5 rounded-full text-xs font-semibold text-center shadow-lg" href="#">
+                                Visit our website
+                            </a>
+<a class="block w-full bg-white border border-gray-200 text-gray-800 py-2.5 rounded-full text-xs font-semibold text-center shadow-sm" href="#">
+                                View Portfolio
+                            </a>
+<a class="block w-full bg-white border border-gray-200 text-gray-800 py-2.5 rounded-full text-xs font-semibold text-center shadow-sm" href="#">
+                                Contact Us
+                            </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-1/2 p-8 sm:p-12 xl:p-16 flex flex-col justify-center relative overflow-y-auto custom-scrollbar">
+<div class="max-w-md mx-auto w-full">
+<div class="flex lg:hidden items-center gap-2 mb-8 justify-center">
+<div class="w-10 h-10 bg-gradient-to-tr from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center shadow-lg">
+<span class="material-icons-round text-white text-xl">auto_awesome</span>
+</div>
+<span class="text-xl font-bold text-gray-900 dark:text-white">SmartBio</span>
+</div>
+<div class="hidden lg:flex items-center gap-2 mb-12">
+<div class="w-10 h-10 bg-gradient-to-tr from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-icons-round text-white text-xl">auto_awesome</span>
+</div>
+<span class="text-xl font-bold text-gray-900 dark:text-white">SmartBio</span>
+</div>
+<div class="mb-10">
+<h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-3">Welcome Back! 👋</h1>
+<p class="text-gray-500 dark:text-gray-400">Enter your credentials to access your account.</p>
+</div>
+<form class="space-y-5">
+<div class="space-y-2">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="email">Email or Username</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-icons-round text-gray-400 text-xl">mail</span>
+</div>
+<input class="block w-full pl-11 pr-4 py-3.5 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all text-sm font-medium" id="email" placeholder="name@example.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="password">Password</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-icons-round text-gray-400 text-xl">lock</span>
+</div>
+<input class="block w-full pl-11 pr-12 py-3.5 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all text-sm font-medium" id="password" placeholder="••••••••" type="password"/>
+<div class="absolute inset-y-0 right-0 pr-4 flex items-center">
+<button class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors focus:outline-none" type="button">
+<span class="material-icons-round text-xl">visibility_off</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<input class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded" id="remember-me" type="checkbox"/>
+<label class="ml-2 block text-sm text-gray-600 dark:text-gray-400" for="remember-me">
+                                Remember me
+                            </label>
+</div>
+<a class="text-sm font-semibold text-primary hover:text-primary-dark transition-colors" href="#">
+                            Forgot Password?
+                        </a>
+</div>
+<button class="w-full py-4 bg-primary hover:bg-primary-dark text-white rounded-xl font-bold shadow-lg shadow-primary/30 hover:shadow-primary/50 transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2">
+                        Login to Account
+                        <span class="material-icons-round text-sm">arrow_forward</span>
+</button>
+</form>
+<div class="mt-8 mb-8 relative">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-gray-200 dark:border-gray-700"></div>
+</div>
+<div class="relative flex justify-center text-sm">
+<span class="px-4 bg-surface-light dark:bg-surface-dark text-gray-500 dark:text-gray-400">Or continue with</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 py-3 px-4 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-sm font-medium text-gray-700 dark:text-gray-200">
+<i class="fab fa-google text-red-500 text-lg"></i>
+<span>Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-sm font-medium text-gray-700 dark:text-gray-200">
+<i class="fab fa-apple text-gray-900 dark:text-white text-lg"></i>
+<span>Apple</span>
+</button>
+</div>
+<p class="mt-10 text-center text-sm text-gray-600 dark:text-gray-400">
+                    Don't have an account? 
+                    <a class="font-bold text-primary hover:text-primary-dark transition-colors" href="#">Sign up for free</a>
+</p>
+</div>
+<div class="absolute bottom-6 left-0 w-full text-center">
+<p class="text-xs text-gray-400 dark:text-gray-500">
+                    © 2023 SmartBio Inc. All rights reserved.
+                </p>
+</div>
+</div>
+</div>
+
+</body></html>

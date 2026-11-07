@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Loading Modal - BioLink</title>
+<!-- Tailwind CSS v3 CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Font: Spline Sans -->
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style data-purpose="typography">
+    body {
+      font-family: 'Spline Sans', sans-serif;
+    }
+  </style>
+<style data-purpose="animations">
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .animate-spin-custom {
+      animation: spin 1s linear infinite;
+    }
+  </style>
+<style data-purpose="layout-utilities">
+    /* Custom overlay transparency to match the reference image's background feel */
+    .bg-overlay {
+      background-color: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(2px);
+    }
+    /* Modal shadow to match the soft depth in the screenshot */
+    .modal-shadow {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+<!-- BEGIN: Loading Modal Overlay -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-overlay p-4" data-purpose="modal-overlay">
+<!-- BEGIN: Modal Content Container -->
+<div class="bg-white rounded-[32px] w-full max-w-[480px] p-10 md:p-12 modal-shadow flex flex-col items-center text-center" data-purpose="modal-card">
+<!-- BEGIN: Loading Animation Section -->
+<div class="mb-8" data-purpose="loading-spinner-container">
+<!-- 
+          Outer circle: light purple track 
+          Inner circle: solid primary purple spinner 
+        -->
+<div class="relative w-16 h-16">
+<div class="absolute inset-0 rounded-full border-4 border-[#7B42F6] opacity-20"></div>
+<div class="absolute inset-0 rounded-full border-4 border-t-transparent border-r-transparent border-b-transparent border-[#7B42F6] animate-spin-custom" style="border-left-color: #7B42F6;"></div>
+</div>
+</div>
+<!-- END: Loading Animation Section -->
+<!-- BEGIN: Text Content -->
+<div data-purpose="loading-text-content">
+<h2 class="text-2xl font-bold text-gray-900 mb-2">
+          Checking availability...
+        </h2>
+<p class="text-gray-500 text-sm leading-relaxed max-w-[280px] mx-auto">
+          Please wait while we verify the uniqueness of your BioLink name.
+        </p>
+</div>
+<!-- END: Text Content -->
+</div>
+<!-- END: Modal Content Container -->
+</div>
+<!-- END: Loading Modal Overlay -->
+<!-- BEGIN: Background Content Simulation (Locked for Modal) -->
+<!-- This represents the screen behind the modal, visually similar to SCREEN_114 -->
+<main aria-hidden="true" class="w-full max-w-md mx-auto p-8 opacity-50 pointer-events-none select-none">
+<div class="bg-white rounded-[32px] p-8 shadow-sm text-center">
+<h1 class="text-2xl font-bold mb-4">Claim your username</h1>
+<p class="text-gray-500 text-sm mb-8">Choose a unique name for your BioLink URL.</p>
+<div class="flex border border-purple-200 rounded-xl overflow-hidden mb-4">
+<span class="bg-gray-50 px-4 py-4 text-gray-400 border-r border-purple-100">catlink.com.br/</span>
+<input class="flex-1 px-4 py-4 focus:outline-none" disabled="" type="text" value="claudia_design"/>
+</div>
+<button class="w-full bg-[#7B42F6] text-white font-semibold py-4 rounded-xl">Confirm Username</button>
+</div>
+</main>
+<!-- END: Background Content Simulation -->
+</body></html>

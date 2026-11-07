@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Catlink - Claim your username</title>
+<!-- Tailwind CSS v3 CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- BEGIN: Custom Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#7C3AED', // Primary brand purple
+              purpleHover: '#6D28D9',
+              lightPurple: '#F5F3FF',
+              success: '#10B981' // Green validation
+            }
+          },
+          borderRadius: {
+            'xl': '1rem',
+            '2xl': '1.5rem'
+          }
+        }
+      }
+    }
+  </script>
+<!-- END: Custom Configuration -->
+<style data-purpose="custom-layout-styles">
+    /* Subtle backdrop blur for the modal background overlay */
+    .modal-overlay {
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased">
+<!-- BEGIN: Background Content (Dimmed state representation) -->
+<main class="min-h-screen flex flex-col items-center justify-center p-4">
+<div class="text-center opacity-20 select-none pointer-events-none">
+<h1 class="text-4xl font-bold text-brand-purple mb-4">Catlink</h1>
+<p class="text-gray-600">Your bio link dashboard</p>
+</div>
+</main>
+<!-- END: Background Content -->
+<!-- BEGIN: Modal Overlay -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-overlay" data-purpose="modal-backdrop">
+<!-- BEGIN: Claim Username Modal -->
+<section class="bg-white w-full max-w-md rounded-2xl shadow-2xl p-8 transform transition-all" data-purpose="claim-username-modal">
+<!-- Modal Header -->
+<div class="text-center mb-8">
+<h2 class="text-2xl font-bold text-gray-900 mb-2">Claim your username</h2>
+<p class="text-gray-500 text-sm">
+          Choose a unique name for your BioLink URL. You can change this later.
+        </p>
+</div>
+<!-- BEGIN: Username Form -->
+<form action="#" class="space-y-6" method="POST" onsubmit="return false;">
+<!-- Input Group -->
+<div class="relative">
+<label class="sr-only" for="username">Username</label>
+<div class="flex items-center border-2 border-brand-purple rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-brand-purple focus-within:ring-opacity-50 transition-all">
+<!-- Prefix -->
+<span class="bg-gray-50 px-4 py-4 text-gray-500 font-medium border-r border-gray-200">
+              catlink.com.br/
+            </span>
+<!-- Input Field -->
+<input class="w-full px-4 py-4 border-none focus:ring-0 text-gray-800 font-medium placeholder-gray-300" id="username" name="username" placeholder="yourname" type="text" value="claudia_design"/>
+</div>
+<!-- Validation Message -->
+<div class="mt-3 flex items-center text-brand-success text-sm font-medium" data-purpose="validation-feedback">
+<svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+            This username is available!
+          </div>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-brand-purple hover:bg-brand-purpleHover text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-purple-200 transition-colors duration-200" data-purpose="confirm-button" type="submit">
+          Confirm Username
+        </button>
+</form>
+<!-- END: Username Form -->
+</section>
+<!-- END: Claim Username Modal -->
+</div>
+<!-- END: Modal Overlay -->
+<script data-purpose="simple-interactivity">
+    // Visual feedback for the button
+    const confirmBtn = document.querySelector('[data-purpose="confirm-button"]');
+    if (confirmBtn) {
+      confirmBtn.addEventListener('click', () => {
+        console.log('Username confirmed!');
+      });
+    }
+  </script>
+</body></html>
