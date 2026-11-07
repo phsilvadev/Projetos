@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BioLink Admin - Add New Component</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#6366f1", // Indigo-500 equivalent
+                        "primary-dark": "#4f46e5",
+                        "background-light": "#f3f4f6", // Gray-100
+                        "background-dark": "#0f172a", // Slate-900
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e293b", // Slate-800
+                        "sidebar-dark": "#111827", // Gray-900
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", 'monospace'],
+                    },
+                    boxShadow: {
+                        'phone': '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                        'glow': '0 0 20px rgba(99, 102, 241, 0.5)',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #475569;
+        }
+        .app-bg-pattern {
+            background-color: #111827;
+            background-image: radial-gradient(#374151 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-surface-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-sans h-screen flex overflow-hidden selection:bg-primary selection:text-white">
+<div class="hidden lg:flex lg:w-1/2 xl:w-5/12 bg-sidebar-dark relative flex-col justify-between overflow-hidden">
+<div class="absolute inset-0 app-bg-pattern opacity-40"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-sidebar-dark/50 to-sidebar-dark"></div>
+<div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/30 rounded-full blur-3xl mix-blend-screen animate-pulse"></div>
+<div class="absolute bottom-1/3 right-1/4 w-80 h-80 bg-purple-600/20 rounded-full blur-3xl mix-blend-screen"></div>
+<div class="relative z-10 p-8 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-gradient-to-tr from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center shadow-lg">
+<span class="material-icons-round text-white text-xl">admin_panel_settings</span>
+</div>
+<span class="text-white font-bold text-xl tracking-tight">Admin<span class="font-light opacity-70">Panel</span></span>
+</div>
+<div class="flex items-center gap-2">
+<a class="px-3 py-1 bg-white/5 hover:bg-white/10 text-gray-300 border border-white/10 rounded text-xs transition-colors flex items-center gap-1" href="#">
+<span class="material-icons-round text-[14px]">arrow_back</span> Back
+            </a>
+</div>
+</div>
+<div class="relative z-10 flex-1 flex items-center justify-center perspective-[1000px]">
+<div class="relative transform transition-all duration-700 ease-out shadow-2xl rounded-[45px]">
+<div class="relative w-[300px] h-[600px] bg-black rounded-[40px] shadow-phone border-[8px] border-black overflow-hidden z-0">
+<div class="absolute top-0 w-full h-8 z-20 flex justify-between items-center px-6 pt-2 text-white text-xs font-semibold">
+<span>9:41</span>
+<div class="flex gap-1.5 items-center">
+<span class="material-icons-round text-[10px]">signal_cellular_alt</span>
+<span class="material-icons-round text-[10px]">wifi</span>
+<span class="material-icons-round text-[10px] rotate-90">battery_full</span>
+</div>
+</div>
+<div class="absolute top-2 left-1/2 transform -translate-x-1/2 w-20 h-5 bg-black rounded-full z-20"></div>
+<div class="w-full h-full bg-[#111827] relative overflow-hidden text-white font-sans overflow-y-auto custom-scrollbar pb-10">
+<div class="relative h-24 w-full overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500"></div>
+</div>
+<div class="relative -mt-10 flex justify-center z-10">
+<div class="w-20 h-20 rounded-full border-4 border-[#111827] shadow-lg overflow-hidden bg-gray-700 relative">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeFeSw-apJZAHOd-ZWUvTc2365vx8RFlT6RZKJyJFUlUYOdt79yiX5ZG0VyC4VqT2CCt0diz2G5y7iteKDhoNIx-VT9f5cPvo-N8CwXrtEpMug4AIfEWYMWAnx8MJxoZKO9xFXG9kx50tEpG2S0mxdMQREIzyFw1plNyUZ6Qn_8bmkUkhKZgiUYG6iYYjVjqOkz1GBXoo5vrkqYHpjFTDDWZYwNbrqSS3A42Z8xBI7ieYU_krQMo9Z_jlPBuc7yU2bx5ifPD54O1bs"/>
+</div>
+</div>
+<div class="text-center px-4 mt-2 mb-6">
+<h1 class="text-base font-bold text-white">Live Preview</h1>
+<p class="text-[10px] text-gray-400">@biolink_admin</p>
+</div>
+<div class="px-4 space-y-3">
+<div class="bg-gray-800 p-3 rounded-lg flex items-center justify-between opacity-50">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-white/10 flex items-center justify-center">
+<i class="fas fa-globe text-xs"></i>
+</div>
+<span class="text-xs font-semibold">Website</span>
+</div>
+</div>
+<div class="border-2 border-dashed border-indigo-500/50 bg-indigo-500/10 p-4 rounded-lg flex flex-col items-center justify-center gap-2 animate-pulse">
+<div class="w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center">
+<span class="material-icons-round text-indigo-400">add_box</span>
+</div>
+<span class="text-xs text-indigo-300 font-medium">New Component Will Appear Here</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative z-10 p-8 text-white/90">
+<div class="glass-panel p-4 rounded-xl flex items-center justify-between">
+<div>
+<h3 class="text-sm font-semibold mb-1">Preview Mode</h3>
+<p class="text-xs text-gray-400">Visualizing default state</p>
+</div>
+<span class="material-icons-round text-gray-400">visibility</span>
+</div>
+</div>
+</div>
+<div class="flex-1 flex flex-col h-full bg-surface-light dark:bg-background-dark relative overflow-hidden">
+<div class="lg:hidden absolute top-6 left-6 flex items-center gap-2 z-50">
+<div class="w-8 h-8 bg-gradient-to-tr from-purple-500 to-indigo-500 rounded-lg flex items-center justify-center shadow-lg">
+<span class="material-icons-round text-white text-sm">admin_panel_settings</span>
+</div>
+<span class="text-gray-900 dark:text-white font-bold text-lg">Admin</span>
+</div>
+<div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-white dark:bg-surface-dark z-20 shadow-sm min-h-[80px]">
+<div>
+<h1 class="text-xl font-bold text-gray-900 dark:text-white">Add New Component</h1>
+<p class="text-xs text-gray-500 dark:text-gray-400">Configure a new content block for the BioLink builder.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 rounded-lg bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 text-sm font-semibold border border-gray-200 dark:border-gray-700 transition-all">
+                Cancel
+            </button>
+<button class="px-4 py-2 rounded-lg bg-primary hover:bg-primary-dark text-white text-sm font-bold shadow-lg shadow-primary/30 transition-all flex items-center gap-2">
+<span class="material-icons-round text-sm">save</span>
+                Save Component
+            </button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-6 lg:p-8 bg-gray-50 dark:bg-[#0b1120]">
+<div class="max-w-4xl mx-auto space-y-6">
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-6">
+<h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+<span class="material-icons-round text-primary">info</span>
+                    Basic Information
+                </h2>
+<div class="flex flex-col md:flex-row gap-8">
+<div class="flex-shrink-0">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Component Icon</label>
+<div class="relative w-32 h-32 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-2xl flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+<input class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" type="file"/>
+<div class="w-12 h-12 bg-indigo-50 dark:bg-indigo-500/10 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+<span class="material-icons-round text-indigo-500">cloud_upload</span>
+</div>
+<span class="text-[10px] text-gray-500 text-center px-2">Drop SVG or PNG</span>
+</div>
+</div>
+<div class="flex-1 space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Component Name</label>
+<input class="w-full rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-surface-dark text-sm focus:ring-primary focus:border-primary dark:text-white shadow-sm py-2 px-3" placeholder="e.g. Spotify Player" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Internal Slug</label>
+<input class="w-full rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm focus:ring-primary focus:border-primary dark:text-gray-300 shadow-sm py-2 px-3 font-mono" placeholder="spotify_embed" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Description</label>
+<textarea class="w-full rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-surface-dark text-sm focus:ring-primary focus:border-primary dark:text-white shadow-sm py-2 px-3 min-h-[80px]" placeholder="Briefly describe what this component does..."></textarea>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-6">
+<h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+<span class="material-icons-round text-green-500">monetization_on</span>
+                        Pricing &amp; Access
+                    </h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<label class="relative cursor-pointer group">
+<input checked="" class="peer sr-only" name="pricing_plan" type="radio"/>
+<div class="p-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark hover:border-indigo-400 peer-checked:border-indigo-600 peer-checked:bg-indigo-50 dark:peer-checked:bg-indigo-900/10 transition-all h-full">
+<div class="flex items-center justify-between mb-2">
+<span class="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-[10px] font-bold uppercase rounded">Free</span>
+<span class="material-icons-round text-indigo-600 opacity-0 peer-checked:opacity-100 transition-opacity">check_circle</span>
+</div>
+<h3 class="font-bold text-gray-900 dark:text-white">Free Component</h3>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Available to all users, including those on the free tier.</p>
+</div>
+</label>
+<label class="relative cursor-pointer group">
+<input class="peer sr-only" name="pricing_plan" type="radio"/>
+<div class="p-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark hover:border-purple-400 peer-checked:border-purple-600 peer-checked:bg-purple-50 dark:peer-checked:bg-purple-900/10 transition-all h-full">
+<div class="flex items-center justify-between mb-2">
+<span class="px-2 py-1 bg-gradient-to-r from-purple-500 to-indigo-500 text-white text-[10px] font-bold uppercase rounded shadow-sm">PRO</span>
+<span class="material-icons-round text-purple-600 opacity-0 peer-checked:opacity-100 transition-opacity">check_circle</span>
+</div>
+<h3 class="font-bold text-gray-900 dark:text-white">PRO Component</h3>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Restricted to paid subscribers. Adds premium value.</p>
+</div>
+</label>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-6">
+<h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+<span class="material-icons-round text-orange-500">category</span>
+                        Category
+                    </h2>
+<div class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Group</label>
+<select class="w-full rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-surface-dark text-sm focus:ring-primary focus:border-primary dark:text-white shadow-sm py-2 px-3">
+<option>Essential Blocks</option>
+<option>Media &amp; Embeds</option>
+<option>Social &amp; Contact</option>
+<option>Monetization</option>
+<option>Advanced</option>
+</select>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="text-sm font-medium text-gray-700 dark:text-gray-300">Active</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 dark:peer-focus:ring-indigo-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-6">
+<h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+<span class="material-icons-round text-pink-500">palette</span>
+        Default Design Settings
+    </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-6">
+<h3 class="text-sm font-semibold text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-700 pb-2">Appearance</h3>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1.5">Background Color</label>
+<div class="flex items-center gap-2">
+<div class="relative w-9 h-9 rounded-lg overflow-hidden shadow-sm border border-gray-200 dark:border-gray-700">
+<input class="absolute -top-2 -left-2 w-16 h-16 cursor-pointer" type="color" value="#6366f1"/>
+</div>
+<input class="flex-1 rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-surface-dark text-sm focus:ring-primary focus:border-primary dark:text-white shadow-sm py-2 px-3 font-mono" type="text" value="#6366f1"/>
+</div>
+</div>
+<div>
+<label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1.5">Text Color</label>
+<div class="flex items-center gap-2">
+<div class="relative w-9 h-9 rounded-lg overflow-hidden shadow-sm border border-gray-200 dark:border-gray-700">
+<input class="absolute -top-2 -left-2 w-16 h-16 cursor-pointer" type="color" value="#ffffff"/>
+</div>
+<input class="flex-1 rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-surface-dark text-sm focus:ring-primary focus:border-primary dark:text-white shadow-sm py-2 px-3 font-mono" type="text" value="#ffffff"/>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">Component Style Type</label>
+<div class="grid grid-cols-3 gap-2">
+<label class="cursor-pointer group">
+<input checked="" class="peer sr-only" name="style_type" type="radio"/>
+<div class="text-center py-2.5 px-2 border rounded-lg border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark hover:bg-gray-50 dark:hover:bg-gray-800 peer-checked:border-primary peer-checked:bg-primary/5 peer-checked:text-primary transition-all">
+<span class="material-icons-round text-base mb-1 block opacity-70 group-hover:opacity-100 transition-opacity">web_asset</span>
+<span class="text-xs font-medium">Card</span>
+</div>
+</label>
+<label class="cursor-pointer group">
+<input class="peer sr-only" name="style_type" type="radio"/>
+<div class="text-center py-2.5 px-2 border rounded-lg border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark hover:bg-gray-50 dark:hover:bg-gray-800 peer-checked:border-primary peer-checked:bg-primary/5 peer-checked:text-primary transition-all">
+<span class="material-icons-round text-base mb-1 block opacity-70 group-hover:opacity-100 transition-opacity">smart_button</span>
+<span class="text-xs font-medium">Button</span>
+</div>
+</label>
+<label class="cursor-pointer group">
+<input class="peer sr-only" name="style_type" type="radio"/>
+<div class="text-center py-2.5 px-2 border rounded-lg border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark hover:bg-gray-50 dark:hover:bg-gray-800 peer-checked:border-primary peer-checked:bg-primary/5 peer-checked:text-primary transition-all">
+<span class="material-icons-round text-base mb-1 block opacity-70 group-hover:opacity-100 transition-opacity">crop_free</span>
+<span class="text-xs font-medium">Transparent</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<h3 class="text-sm font-semibold text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-700 pb-2">Shape &amp; Typography</h3>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1.5">Border Radius</label>
+<select class="w-full rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-surface-dark text-sm focus:ring-primary focus:border-primary dark:text-white shadow-sm py-2 px-3">
+<option>None (0px)</option>
+<option>Small (4px)</option>
+<option selected="">Medium (8px)</option>
+<option>Large (16px)</option>
+<option>Full (Rounded)</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1.5">Shadow Depth</label>
+<select class="w-full rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-surface-dark text-sm focus:ring-primary focus:border-primary dark:text-white shadow-sm py-2 px-3">
+<option>None</option>
+<option selected="">Small</option>
+<option>Medium</option>
+<option>Large</option>
+<option>Glow</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1.5">Font Size</label>
+<select class="w-full rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-surface-dark text-sm focus:ring-primary focus:border-primary dark:text-white shadow-sm py-2 px-3">
+<option>Small (12px)</option>
+<option selected="">Normal (14px)</option>
+<option>Large (16px)</option>
+<option>Extra Large (20px)</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1.5">Font Weight</label>
+<select class="w-full rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-surface-dark text-sm focus:ring-primary focus:border-primary dark:text-white shadow-sm py-2 px-3">
+<option>Light (300)</option>
+<option selected="">Regular (400)</option>
+<option>Medium (500)</option>
+<option>Bold (700)</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-6">
+<h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+<span class="material-icons-round text-gray-500">code</span>
+                    Advanced Configuration
+                </h2>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between items-end mb-1">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Default Data Structure (JSON)</label>
+<span class="text-xs text-gray-400 font-mono">config.json</span>
+</div>
+<textarea class="w-full rounded-lg border-gray-300 dark:border-gray-700 bg-gray-900 text-green-400 text-xs font-mono shadow-sm py-3 px-4 min-h-[160px] leading-relaxed" spellcheck="false">{
+  "type": "spotify_embed",
+  "data": {
+    "url": "",
+    "height": 380,
+    "theme": "dark"
+  },
+  "settings": {
+    "allow_collapse": true
+  }
+}</textarea>
+<p class="text-xs text-gray-500 mt-1">Define the initial state and validation rules for this component.</p>
+</div>
+<div class="pt-4 border-t border-gray-200 dark:border-gray-700">
+<h3 class="text-sm font-medium text-gray-900 dark:text-white mb-3">Integration Points</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs text-gray-500 dark:text-gray-400 mb-1">Frontend Component Key</label>
+<input class="w-full rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-surface-dark text-sm focus:ring-primary focus:border-primary dark:text-white shadow-sm py-2 px-3" placeholder="SpotifyBlock" type="text"/>
+</div>
+<div>
+<label class="block text-xs text-gray-500 dark:text-gray-400 mb-1">API Endpoint (Optional)</label>
+<input class="w-full rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-surface-dark text-sm focus:ring-primary focus:border-primary dark:text-white shadow-sm py-2 px-3" placeholder="/api/integrations/spotify" type="text"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BioLink Preview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#6366f1",
+                        "primary-dark": "#4f46e5",
+                        "background-light": "#f3f4f6",
+                        "background-dark": "#0f172a",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e293b",
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'phone': '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #475569;
+        }
+        .app-bg-pattern {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .dark .app-bg-pattern {
+            background-color: #0f172a;
+            background-image: radial-gradient(#334155 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-sans h-screen flex justify-center items-center overflow-hidden selection:bg-primary selection:text-white app-bg-pattern">
+<main class="w-full h-full flex items-center justify-center relative p-4">
+<button class="absolute top-6 right-6 bg-white dark:bg-surface-dark p-2 rounded-full shadow-md text-gray-600 dark:text-gray-300 hover:text-primary transition-colors z-50">
+<span class="material-icons-round text-2xl">close</span>
+</button>
+<div class="relative w-full max-w-[375px] h-[812px] max-h-[90vh] bg-black rounded-[40px] shadow-phone border-[8px] border-black overflow-hidden z-10 mx-auto">
+<div class="absolute top-0 w-full h-8 z-30 flex justify-between items-center px-6 pt-2 text-white text-xs font-semibold pointer-events-none">
+<span>9:41</span>
+<div class="flex gap-1.5 items-center">
+<span class="material-icons-round text-[10px]">signal_cellular_alt</span>
+<span class="material-icons-round text-[10px]">wifi</span>
+<span class="material-icons-round text-[10px] rotate-90">battery_full</span>
+</div>
+</div>
+<div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-[30px] bg-black rounded-b-[18px] z-30 pointer-events-none"></div>
+<div class="w-full h-full bg-white relative overflow-y-auto overflow-x-hidden custom-scrollbar">
+<div class="relative h-48 w-full overflow-hidden bg-white">
+<div class="absolute inset-0 bg-gradient-to-tr from-cyan-900 via-indigo-900 to-purple-800"></div>
+<div class="absolute top-0 left-0 w-full h-full opacity-60 mix-blend-overlay">
+<div class="absolute top-[-20%] left-[-20%] w-[80%] h-[80%] bg-blue-500 rounded-full blur-3xl"></div>
+<div class="absolute bottom-[-20%] right-[-20%] w-[80%] h-[80%] bg-pink-500 rounded-full blur-3xl"></div>
+</div>
+<div class="absolute top-10 left-0 w-full px-4 flex justify-between items-center z-10 text-white">
+<div class="flex items-center gap-1 font-bold text-sm">
+<span class="material-icons-round text-base">auto_awesome</span>
+                        SmartBio
+                    </div>
+<button>
+<span class="material-icons-round text-xl">menu</span>
+</button>
+</div>
+<div class="absolute bottom-[-1px] left-0 w-full overflow-hidden leading-[0]">
+<svg class="relative block w-[calc(140%+1.3px)] h-[50px] fill-white" data-name="Layer 1" preserveAspectRatio="none" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
+<path d="M600,112.77C268.63,112.77,0,65.52,0,7.23V120H1200V7.23C1200,65.52,931.37,112.77,600,112.77Z"></path>
+</svg>
+</div>
+</div>
+<div class="relative -mt-16 flex justify-center z-10">
+<div class="w-24 h-24 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-200">
+<img alt="Profile Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeFeSw-apJZAHOd-ZWUvTc2365vx8RFlT6RZKJyJFUlUYOdt79yiX5ZG0VyC4VqT2CCt0diz2G5y7iteKDhoNIx-VT9f5cPvo-N8CwXrtEpMug4AIfEWYMWAnx8MJxoZKO9xFXG9kx50tEpG2S0mxdMQREIzyFw1plNyUZ6Qn_8bmkUkhKZgiUYG6iYYjVjqOkz1GBXoo5vrkqYHpjFTDDWZYwNbrqSS3A42Z8xBI7ieYU_krQMo9Z_jlPBuc7yU2bx5ifPD54O1bs"/>
+</div>
+</div>
+<div class="text-center px-6 mt-3 mb-6">
+<h1 class="text-xl font-bold text-gray-900 mb-2">Rock Agency</h1>
+<p class="text-xs text-gray-500 leading-relaxed max-w-[260px] mx-auto">
+                    Rock Agency is a digital agency company and website studio specializing in products, commerce, and SaaS website.
+                </p>
+</div>
+<div class="flex justify-center gap-4 mb-8">
+<a class="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center shadow-sm hover:scale-110 transition-transform" href="#">
+<i class="fab fa-facebook-f text-sm"></i>
+</a>
+<a class="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center shadow-sm hover:scale-110 transition-transform" href="#">
+<i class="fab fa-instagram text-sm"></i>
+</a>
+<a class="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center shadow-sm hover:scale-110 transition-transform" href="#">
+<i class="fab fa-linkedin-in text-sm"></i>
+</a>
+<a class="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center shadow-sm hover:scale-110 transition-transform" href="#">
+<i class="fab fa-youtube text-sm"></i>
+</a>
+</div>
+<div class="px-4 mb-4">
+<div class="rounded-2xl overflow-hidden shadow-sm border border-gray-100 relative h-40 bg-gray-100 group cursor-pointer">
+<img alt="Map Preview" class="w-full h-full object-cover opacity-80 grayscale-[30%] group-hover:grayscale-0 transition-all duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHRZi_dBQEc4J6faJkbNwPyxBdKfYVv9epPDQPdyj1CpGwyUnSxqmYu_BtG9CAZKDN31Wct8LtkZtdQ_fv1O2uvcBmRdipe-l4zGjjIEdZ-k0Yddqng_8-eqov0Jl83r1FK_W-p3G837zTs50uGSC9fu_JKKmHyCOcoyt1hujxAAUhVQ9M5_P-EVxffUAxGIOA7ertVSx1Z2cZicwLG8yJE2NDxmxrVI40BiIaWJjkaORoB63Hs_KYcN-XF517PjIkNdhw1NkDJB5a"/>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center animate-pulse">
+<div class="w-4 h-4 rounded-full bg-primary border-2 border-white"></div>
+</div>
+<div class="mt-1 bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] font-bold shadow-sm text-primary">
+                             Union Coop Al
+                         </div>
+<button class="mt-1 bg-primary text-white text-[9px] font-bold px-2 py-1 rounded-full shadow-md group-hover:scale-105 transition-transform">
+                             See Our Location
+                         </button>
+</div>
+</div>
+</div>
+<div class="px-4 mb-8">
+<a class="block w-full bg-gray-900 text-white py-3 rounded-full text-sm font-semibold text-center shadow-lg relative group overflow-hidden transition-transform active:scale-[0.98]" href="#">
+<span class="relative z-10 flex items-center justify-center gap-2">
+<span class="material-icons-round text-sm">public</span>
+                        Visit our website
+                        <span class="absolute right-4 text-xs group-hover:translate-x-1 transition-transform">↗</span>
+</span>
+<div class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+</a>
+</div>
+<div class="pb-6 flex justify-center items-center gap-1 opacity-50 hover:opacity-100 transition-opacity">
+<a class="bg-gray-100 rounded-full px-3 py-1 flex items-center gap-1 text-[10px] text-gray-500 border border-gray-200 hover:bg-gray-200 transition-colors" href="#">
+<span>smartbio.ai/yourpage</span>
+<span class="material-icons-round text-[10px] bg-black text-white rounded-full p-[1px]">arrow_outward</span>
+</a>
+</div>
+<div class="pb-12 text-center text-[9px] text-gray-400">
+</div>
+</div>
+<div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1.5 bg-black rounded-full z-30 pointer-events-none opacity-20"></div>
+</div>
+</main>
+</body></html>

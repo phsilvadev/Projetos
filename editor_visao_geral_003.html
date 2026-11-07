@@ -1,0 +1,530 @@
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BioLink Editor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#6366f1", // Indigo-500 equivalent, matching the purplish-blue buttons
+                        "primary-dark": "#4f46e5",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                        "sidebar-dark": "#111827",
+                        "panel-light": "#ffffff",
+                        "panel-dark": "#1e293b",
+                        "border-light": "#e2e8f0",
+                        "border-dark": "#334155",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        'xl': '1rem',
+                        '2xl': '1.5rem',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 2px 8px rgba(0,0,0,0.04)',
+                        'active': '0 0 0 2px #6366f1',
+                    }
+                },
+            },
+        };
+    </script>
+<style>::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+        .phone-frame-bg {
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .dark .phone-frame-bg {
+            background-image: radial-gradient(#334155 1px, transparent 1px);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 font-sans h-screen flex overflow-hidden selection:bg-primary selection:text-white">
+<aside class="w-16 bg-sidebar-dark flex flex-col items-center py-6 gap-6 z-20 shrink-0 border-r border-slate-800">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white mb-4">
+<span class="material-icons-round text-xl">auto_awesome</span>
+</div>
+<div class="flex flex-col gap-4 w-full items-center">
+<button class="w-10 h-10 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition-colors relative group">
+<span class="material-icons-round">menu</span>
+<span class="absolute left-12 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50">Menu</span>
+</button>
+<button class="w-10 h-10 rounded-lg bg-slate-800 text-white flex items-center justify-center shadow-lg border border-slate-700">
+<span class="material-icons-round">add</span>
+</button>
+<button class="w-10 h-10 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
+<span class="material-icons-round">calendar_today</span>
+</button>
+<button class="w-10 h-10 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
+<span class="material-icons-round">image</span>
+</button>
+<button class="w-10 h-10 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
+<span class="material-icons-round">layers</span>
+</button>
+</div>
+<div class="flex-grow"></div>
+<div class="flex flex-col gap-4 w-full items-center mb-2">
+<button class="w-10 h-10 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
+<span class="material-icons-round">settings</span>
+</button>
+<button class="w-10 h-10 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
+<span class="material-icons-round">help_outline</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-slate-700 mt-2 overflow-hidden border border-slate-600">
+<img alt="User" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7I0RUF-eRk1onhLT20-_-PtkILHHvytpxYnk2Pjk02GF_pSEcCgq8ABARiGx1DheopZXx4agEiNPB5-_BAtWwC9vvP1tXizA8wuXdeJ3PpzjbZyiNoUevXs91o9K40UcObb2HFXWOZB2UKnPqIvYEbTsJ9MS7jYS9VBo5ASVWUnSK6uMmNQsF3oLmq6mCOnwCS3R5Gqfp9lEoQLP-CXbO67UqvkFmuy1ErUOkRSfmvGxYx0htWVxinspR1WIqeom1oTJlJLHu4n_o"/>
+</div>
+</div>
+</aside>
+<div class="flex-1 flex flex-col h-full min-w-0">
+<header class="h-16 bg-white dark:bg-panel-dark border-b border-border-light dark:border-border-dark flex items-center justify-between px-6 shrink-0 z-10">
+<div class="flex items-center gap-4">
+<div class="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
+<button class="p-1.5 rounded bg-primary text-white shadow-sm">
+<span class="material-icons-round text-sm">smartphone</span>
+</button>
+<button class="p-1.5 rounded text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 ml-1">
+<span class="material-icons-round text-sm">desktop_windows</span>
+</button>
+</div>
+<div class="h-8 w-px bg-slate-200 dark:bg-slate-700 mx-2"></div>
+<div class="flex flex-col text-xs">
+<span class="text-slate-400 dark:text-slate-500 font-medium">Size</span>
+<span class="font-semibold dark:text-slate-200 flex items-center gap-1">375 x 812 <span class="material-icons-round text-[10px] text-slate-400">info</span></span>
+</div>
+</div>
+<div class="flex-1 max-w-xl mx-8">
+<div class="flex items-center bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full px-4 py-1.5 shadow-sm text-sm">
+<span class="text-slate-400 mr-2 material-icons-round text-sm">lock</span>
+<span class="text-slate-500 dark:text-slate-400 truncate">https://smartbio.ai/rockagency</span>
+<button class="ml-auto bg-primary hover:bg-primary-dark text-white text-xs font-medium px-3 py-1 rounded-full transition-colors">
+                        Connect Domain
+                    </button>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center text-slate-500 dark:text-slate-400 text-sm font-medium gap-3 mr-4">
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+<span class="material-icons-round text-lg">undo</span> Undo
+                    </button>
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+<span class="material-icons-round text-lg">redo</span> Redo
+                    </button>
+</div>
+<div class="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-full border border-slate-200 dark:border-slate-700">
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-white dark:bg-slate-600 shadow-sm text-yellow-500">
+<span class="material-icons-round text-sm">wb_sunny</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-icons-round text-sm">nightlight_round</span>
+</button>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition-colors">
+<span class="material-icons-round">visibility</span>
+</button>
+<button class="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white pl-4 pr-3 py-2 rounded-full font-medium text-sm shadow-md shadow-indigo-200 dark:shadow-none transition-colors">
+<span class="material-icons-round text-sm">rocket_launch</span>
+                    Publish
+                    <span class="material-icons-round text-sm ml-1">expand_more</span>
+</button>
+</div>
+</header>
+<div class="flex-1 flex overflow-hidden">
+<div class="w-80 bg-white dark:bg-panel-dark border-r border-border-light dark:border-border-dark flex flex-col overflow-y-auto custom-scrollbar">
+<div class="p-5 border-b border-border-light dark:border-border-dark">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-slate-800 dark:text-slate-100">Add Blocks</h3>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-icons-round">remove</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="relative group cursor-grab">
+<div class="bg-white dark:bg-slate-800 hover:border-primary border border-slate-200 dark:border-slate-700 p-4 rounded-xl flex flex-col items-center justify-center gap-2 cursor-pointer transition-all hover:shadow-md group">
+<div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 group-hover:bg-primary/10 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-icons-round text-lg">title</span>
+</div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-300 group-hover:text-primary">Text</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 hover:border-primary border border-slate-200 dark:border-slate-700 p-4 rounded-xl flex flex-col items-center justify-center gap-2 cursor-pointer transition-all hover:shadow-md group">
+<div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 group-hover:bg-primary/10 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-icons-round text-lg">event</span>
+</div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-300 group-hover:text-primary">Calendar</span>
+</div>
+<div class="bg-white dark:bg-slate-800 hover:border-primary border border-slate-200 dark:border-slate-700 p-4 rounded-xl flex flex-col items-center justify-center gap-2 cursor-pointer transition-all hover:shadow-md group">
+<div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 group-hover:bg-primary/10 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-icons-round text-lg">assignment</span>
+</div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-300 group-hover:text-primary">Booking List</span>
+</div>
+<div class="bg-white dark:bg-slate-800 hover:border-primary border border-slate-200 dark:border-slate-700 p-4 rounded-xl flex flex-col items-center justify-center gap-2 cursor-pointer transition-all hover:shadow-md group">
+<div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 group-hover:bg-primary/10 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-icons-round text-lg">image</span>
+</div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-300 group-hover:text-primary">Image</span>
+</div>
+<div class="bg-white dark:bg-slate-800 hover:border-primary border border-slate-200 dark:border-slate-700 p-4 rounded-xl flex flex-col items-center justify-center gap-2 cursor-pointer transition-all hover:shadow-md group">
+<div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 group-hover:bg-primary/10 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-icons-round text-lg">smart_button</span>
+</div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-300 group-hover:text-primary">Button</span>
+</div>
+<div class="bg-white dark:bg-slate-800 hover:border-primary border border-slate-200 dark:border-slate-700 p-4 rounded-xl flex flex-col items-center justify-center gap-2 cursor-pointer transition-all hover:shadow-md group">
+<div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 group-hover:bg-primary/10 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-icons-round text-lg">link</span>
+</div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-300 group-hover:text-primary">Link</span>
+</div>
+<div class="bg-white dark:bg-slate-800 hover:border-primary border border-slate-200 dark:border-slate-700 p-4 rounded-xl flex flex-col items-center justify-center gap-2 cursor-pointer transition-all hover:shadow-md group">
+<div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 group-hover:bg-primary/10 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-icons-round text-lg">place</span>
+</div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-300 group-hover:text-primary">Map</span>
+</div>
+<div class="bg-white dark:bg-slate-800 hover:border-primary border border-slate-200 dark:border-slate-700 p-4 rounded-xl flex flex-col items-center justify-center gap-2 cursor-pointer transition-all hover:shadow-md group">
+<div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 group-hover:bg-primary/10 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-icons-round text-lg">mark_email_unread</span>
+</div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-300 group-hover:text-primary">Newsletter</span>
+</div>
+<div class="relative group cursor-grab">
+<div class="absolute -top-3 -left-3 bg-white dark:bg-slate-700 rounded-full p-1 shadow-md z-20 animate-bounce">
+<span class="material-icons-round text-sm text-slate-800 dark:text-white transform rotate-12">back_hand</span>
+</div>
+<div class="bg-primary p-4 rounded-xl flex flex-col items-center justify-center gap-2 shadow-lg shadow-indigo-200 dark:shadow-none border-2 border-primary transform -rotate-2 scale-105 transition-transform z-10 relative">
+<div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white">
+<span class="material-icons-round text-lg">videocam</span>
+</div>
+<span class="text-xs font-semibold text-white">Video</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 hover:border-primary border border-slate-200 dark:border-slate-700 p-4 rounded-xl flex flex-col items-center justify-center gap-2 cursor-pointer transition-all hover:shadow-md group">
+<div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 group-hover:bg-primary/10 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-icons-round text-lg">headphones</span>
+</div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-300 group-hover:text-primary">Audio</span>
+</div>
+<div class="bg-white dark:bg-slate-800 hover:border-primary border border-slate-200 dark:border-slate-700 p-4 rounded-xl flex flex-col items-center justify-center gap-2 cursor-pointer transition-all hover:shadow-md group">
+<div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 group-hover:bg-primary/10 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-icons-round text-lg">share</span>
+</div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-300 group-hover:text-primary">Social Icons</span>
+</div>
+<div class="bg-white dark:bg-slate-800 hover:border-primary border border-slate-200 dark:border-slate-700 p-4 rounded-xl flex flex-col items-center justify-center gap-2 cursor-pointer transition-all hover:shadow-md group">
+<div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 group-hover:bg-primary/10 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-icons-round text-lg">quiz</span>
+</div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-300 group-hover:text-primary">FAQ</span>
+</div>
+<div class="bg-white dark:bg-slate-800 hover:border-primary border border-slate-200 dark:border-slate-700 p-4 rounded-xl flex flex-col items-center justify-center gap-2 cursor-pointer transition-all hover:shadow-md group">
+<div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 group-hover:bg-primary/10 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-icons-round text-lg">timer</span>
+</div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-300 group-hover:text-primary">Countdown</span>
+</div>
+<div class="bg-white dark:bg-slate-800 hover:border-primary border border-slate-200 dark:border-slate-700 p-4 rounded-xl flex flex-col items-center justify-center gap-2 cursor-pointer transition-all hover:shadow-md group">
+<div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 group-hover:bg-primary/10 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-icons-round text-lg">horizontal_rule</span>
+</div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-300 group-hover:text-primary">Divider</span>
+</div>
+</div>
+<button class="w-full mt-4 bg-primary/10 hover:bg-primary/20 text-primary font-medium py-3 rounded-xl transition-colors text-sm">
+                        See Another Blocks
+                    </button>
+</div>
+<div class="p-5">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-slate-800 dark:text-slate-100">Social Media</h3>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-icons-round">remove</span>
+</button>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3 group">
+<div class="w-6 h-6 flex-shrink-0 text-pink-500">
+<i class="fab fa-instagram text-xl"></i>
+</div>
+<input class="w-full bg-transparent border-none text-sm text-slate-600 dark:text-slate-300 p-0 focus:ring-0 truncate" readonly="" type="text" value="instagram.com/rockagency"/>
+<button class="text-slate-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-icons-round text-lg">delete</span>
+</button>
+</div>
+<div class="flex items-center gap-3 group">
+<div class="w-6 h-6 flex-shrink-0 text-blue-600">
+<i class="fab fa-facebook text-xl"></i>
+</div>
+<input class="w-full bg-transparent border-none text-sm text-slate-600 dark:text-slate-300 p-0 focus:ring-0 truncate" readonly="" type="text" value="facebook.com/rockagency"/>
+<button class="text-slate-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-icons-round text-lg">delete</span>
+</button>
+</div>
+<div class="flex items-center gap-3 group">
+<div class="w-6 h-6 flex-shrink-0 text-red-600">
+<i class="fab fa-youtube text-xl"></i>
+</div>
+<input class="w-full bg-transparent border-none text-sm text-slate-600 dark:text-slate-300 p-0 focus:ring-0 truncate" readonly="" type="text" value="youtube.com/rockagency"/>
+<button class="text-slate-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-icons-round text-lg">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 bg-slate-50 dark:bg-slate-900 phone-frame-bg relative flex items-center justify-center p-8 overflow-hidden">
+<div class="absolute top-6 flex items-center bg-white dark:bg-slate-800 rounded-full shadow-sm border border-slate-200 dark:border-slate-700 px-3 py-1.5 z-10">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-icons-round text-sm">remove</span>
+</button>
+<span class="mx-3 text-xs font-semibold text-slate-600 dark:text-slate-300">90%</span>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-icons-round text-sm">add</span>
+</button>
+</div>
+<div class="relative scale-[0.9] 2xl:scale-100 transition-transform duration-300">
+<div class="absolute top-28 -left-[5px] w-[5px] h-8 bg-slate-700 dark:bg-slate-600 rounded-l-md shadow-inner"></div>
+<div class="absolute top-44 -left-[5px] w-[5px] h-14 bg-slate-700 dark:bg-slate-600 rounded-l-md shadow-inner"></div>
+<div class="absolute top-60 -left-[5px] w-[5px] h-14 bg-slate-700 dark:bg-slate-600 rounded-l-md shadow-inner"></div>
+<div class="absolute top-48 -right-[5px] w-[5px] h-20 bg-slate-700 dark:bg-slate-600 rounded-r-md shadow-inner"></div>
+<div class="w-[340px] h-[720px] bg-black rounded-[60px] shadow-[0_0_0_4px_#334155,0_0_0_6px_#1e293b,0_25px_50px_-12px_rgba(0,0,0,0.5)] relative border-[8px] border-slate-800 overflow-hidden ring-1 ring-white/10 dark:ring-white/5">
+<div class="absolute inset-0 rounded-[52px] border-[12px] border-black pointer-events-none z-30"></div>
+<div class="absolute top-7 left-1/2 -translate-x-1/2 w-[90px] h-[26px] bg-black rounded-full z-40 flex items-center justify-end pr-2.5">
+<div class="w-2 h-2 rounded-full bg-[#1c1c1e] ring-1 ring-white/10 shadow-inner"></div>
+</div>
+<div class="w-full h-full bg-white rounded-[44px] overflow-hidden overflow-y-auto relative flex flex-col no-scrollbar">
+<div class="absolute top-0 w-full flex justify-between items-center px-8 pt-5 z-20 text-white font-medium text-[11px] select-none mix-blend-plus-lighter">
+<span class="pl-1">9:41</span>
+<div class="flex items-center gap-1.5 pr-1">
+<span class="material-icons-round text-[12px]">signal_cellular_alt</span>
+<span class="material-icons-round text-[12px]">wifi</span>
+<span class="material-icons-round text-[12px] rotate-90">battery_full</span>
+</div>
+</div>
+<div class="relative bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-600 h-52 shrink-0 p-4 text-white">
+<div class="flex justify-between items-center mt-12 px-2 relative z-10">
+<div class="flex items-center gap-1 font-bold text-sm bg-black/20 backdrop-blur-sm px-3 py-1.5 rounded-full">
+<span class="material-icons-round text-sm">auto_awesome</span> SmartBio
+                                </div>
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-black/20 backdrop-blur-sm hover:bg-black/30 transition">
+<span class="material-icons-round text-sm">more_horiz</span>
+</button>
+</div>
+<div class="absolute -bottom-12 left-1/2 -translate-x-1/2 w-28 h-28 rounded-full border-4 border-white bg-white overflow-hidden shadow-lg z-10">
+<img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCX7GKZxlAgbqYYoWiCaCxypkRbwe-ttm4CLWC1rhz2RK-iH3f4Gm78o1ouJ4lLAhSxpRwOx7T47S2fuocllCx8Z-cjx0W6BAhVb_CaKa0UFoehHNBGX0qjXjOTZfeAERF53v6GohPlmSdyemXRo_23ufwN9vCMsLW-8yDcfc_xsm8ktR_4oHpQ59nuaB1VH0u652uFsWEWy2A5RtB1Rf-x3Kgb86sIkhoARkzd10jLHnCqlsP43KWVSGEDc8cLAtuBJU6CVWPHR2fc"/>
+</div>
+<svg class="absolute bottom-0 left-0 w-full h-16 text-white fill-current" preserveAspectRatio="none" viewBox="0 0 1440 320">
+<path d="M0,224L120,213.3C240,203,480,181,720,181.3C960,181,1200,203,1320,213.3L1440,224L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z" fill-opacity="1"></path>
+</svg>
+</div>
+<div class="flex-1 px-6 pt-16 pb-24 flex flex-col items-center text-center gap-5">
+<div>
+<h1 class="font-bold text-2xl text-slate-900 tracking-tight">Rock Agency</h1>
+<p class="text-xs text-slate-500 mt-2 leading-relaxed max-w-[260px] mx-auto">
+                                    Rock Agency is a digital agency company and website studio specializing in products, commerce, and SaaS website.
+                                </p>
+</div>
+<div class="flex gap-4 my-1">
+<a class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center text-base hover:scale-110 transition-transform shadow-lg shadow-slate-200" href="#"><i class="fab fa-facebook-f"></i></a>
+<a class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center text-base hover:scale-110 transition-transform shadow-lg shadow-slate-200" href="#"><i class="fab fa-instagram"></i></a>
+<a class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center text-base hover:scale-110 transition-transform shadow-lg shadow-slate-200" href="#"><i class="fab fa-linkedin-in"></i></a>
+<a class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center text-base hover:scale-110 transition-transform shadow-lg shadow-slate-200" href="#"><i class="fab fa-youtube"></i></a>
+</div>
+<div class="w-full h-44 bg-slate-100 rounded-2xl overflow-hidden relative border border-slate-200 shadow-sm group cursor-pointer">
+<img alt="Map pattern" class="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-80 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlK24zNCy0k3iPe32Bnemr_gDQ51QKQD3rDve5nGhJUEreOkRGbIPRo5saJhCA4Mnfn2lftOSEi3gzuSs6neTnUt1N3nfc4D8U0MMC1xoOc0knASAxP1Xinv-xCw_UHS0pZ1xYG8upadcoqgoI7Gluw__6uesEsbZ3yJsri5TZJW5kkMJZ4rTmixmduDgUUhOlv-4CSqITKDvl-gPXUQVquKFqtXRDgnVtotEHOz_Wjb-gC9W6jMr8zuZKJSnjU48W0fTXwQMRMJGn"/>
+<div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+<div class="bg-primary text-white p-2 rounded-full shadow-lg mb-2 animate-bounce">
+<span class="material-icons-round text-base">place</span>
+</div>
+<div class="bg-primary/90 backdrop-blur-sm text-white text-[10px] font-bold px-4 py-2 rounded-full shadow-lg">
+                                        See Our Location
+                                    </div>
+</div>
+</div>
+<div class="w-full aspect-video bg-black rounded-2xl overflow-hidden relative shadow-md group">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="w-full h-full" frameborder="0" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player"></iframe>
+</div>
+<div class="w-full bg-slate-900 text-white p-4 rounded-2xl flex items-center justify-between px-6 shadow-xl shadow-slate-200 hover:shadow-2xl transition-shadow cursor-pointer">
+<div class="flex items-center gap-3 text-sm font-semibold">
+<div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+<span class="material-icons-round text-sm">public</span>
+</div>
+                                    Visit our website
+                                </div>
+<span class="material-icons-round text-sm text-slate-400">arrow_forward</span>
+</div>
+</div>
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[280px]">
+<div class="bg-white/80 backdrop-blur-md border border-white/50 shadow-lg shadow-slate-200/50 p-1.5 rounded-full flex items-center gap-2 pr-4">
+<div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400">
+<span class="material-icons-round text-sm">grid_view</span>
+</div>
+<div class="flex-1 flex flex-col justify-center h-full">
+<span class="text-[8px] text-slate-400 font-medium uppercase tracking-wider leading-none">Powered by</span>
+<span class="text-[10px] font-bold text-slate-800 leading-tight">SmartBio.ai</span>
+</div>
+<button class="bg-black text-white text-[10px] font-bold px-3 py-1.5 rounded-full">
+                                    Get it
+                                </button>
+</div>
+<div class="text-center mt-3">
+<span class="text-[9px] text-slate-400 font-medium cursor-pointer hover:text-slate-600 transition-colors">Upgrade to remove branding</span>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute right-0 top-1/2 -translate-y-1/2 bg-slate-900 text-white rounded-l-lg py-3 px-1 cursor-pointer flex flex-col items-center gap-1 z-20">
+<span class="text-[10px] font-bold transform -rotate-90 whitespace-nowrap mb-4 mt-2">Hide</span>
+<span class="material-icons-round text-sm">chevron_right</span>
+</div>
+</div>
+<div class="w-80 bg-white dark:bg-panel-dark border-l border-border-light dark:border-border-dark flex flex-col overflow-y-auto custom-scrollbar">
+<div class="p-4 border-b border-border-light dark:border-border-dark flex items-center justify-between bg-slate-50/50 dark:bg-slate-800/50 sticky top-0 backdrop-blur-sm z-10">
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400 transition-colors">
+<span class="material-icons-round">arrow_back</span>
+</button>
+<h3 class="font-bold text-slate-800 dark:text-slate-100">Video Settings</h3>
+</div>
+<button class="text-slate-400 hover:text-red-500 transition-colors" title="Delete Block">
+<span class="material-icons-round">delete_outline</span>
+</button>
+</div>
+<div class="p-5 border-b border-border-light dark:border-border-dark">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-icons-round text-primary text-xl">videocam</span>
+<h4 class="font-semibold text-sm text-slate-700 dark:text-slate-200">Source</h4>
+</div>
+<div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg mb-4">
+<button class="flex-1 bg-white dark:bg-slate-600 shadow-sm py-1.5 rounded-md text-xs font-medium text-slate-800 dark:text-white transition-all flex items-center justify-center gap-1">
+<span class="material-icons-round text-sm">link</span> URL
+    </button>
+<button class="flex-1 text-slate-500 dark:text-slate-400 hover:text-slate-700 py-1.5 rounded-md text-xs font-medium transition-colors flex items-center justify-center gap-1">
+<span class="material-icons-round text-sm">upload_file</span> Upload
+    </button>
+</div>
+<div class="space-y-3">
+<div>
+<label class="text-xs font-medium text-slate-600 dark:text-slate-300 mb-1.5 block">Video URL</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
+<span class="material-icons-round text-sm">link</span>
+</span>
+<input class="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 focus:ring-2 focus:ring-primary focus:border-transparent placeholder:text-slate-400" placeholder="https://youtube.com/..." type="text" value="https://youtube.com/watch?v=dQw4w9WgXcQ"/>
+</div>
+<p class="text-[10px] text-slate-400 mt-1.5">Supports YouTube, Vimeo, Twitch, and direct MP4 links.</p>
+</div>
+</div>
+</div>
+<div class="p-5 border-b border-border-light dark:border-border-dark">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-icons-round text-primary text-xl">tune</span>
+<h4 class="font-semibold text-sm text-slate-700 dark:text-slate-200">Playback Options</h4>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex flex-col">
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Autoplay</span>
+<span class="text-[10px] text-slate-400">Start playing automatically</span>
+</div>
+<div class="relative inline-flex h-5 w-9 items-center rounded-full bg-slate-200 transition-colors duration-200 ease-in-out peer-checked:bg-primary cursor-pointer hover:bg-slate-300">
+<span class="inline-block h-3.5 w-3.5 transform rounded-full bg-white transition duration-200 ease-in-out translate-x-1 shadow-sm"></span>
+</div>
+</div>
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex flex-col">
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Loop Video</span>
+<span class="text-[10px] text-slate-400">Restart when finished</span>
+</div>
+<div class="relative inline-flex h-5 w-9 items-center rounded-full bg-slate-200 transition-colors duration-200 ease-in-out cursor-pointer hover:bg-slate-300">
+<span class="inline-block h-3.5 w-3.5 transform rounded-full bg-white transition duration-200 ease-in-out translate-x-1 shadow-sm"></span>
+</div>
+</div>
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex flex-col">
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Muted</span>
+<span class="text-[10px] text-slate-400">Start video without sound</span>
+</div>
+<div class="relative inline-flex h-5 w-9 items-center rounded-full bg-primary transition-colors duration-200 ease-in-out cursor-pointer">
+<span class="inline-block h-3.5 w-3.5 transform rounded-full bg-white transition duration-200 ease-in-out translate-x-4.5 shadow-sm"></span>
+</div>
+</div>
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex flex-col">
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Show Controls</span>
+<span class="text-[10px] text-slate-400">Player controls visibility</span>
+</div>
+<div class="relative inline-flex h-5 w-9 items-center rounded-full bg-primary transition-colors duration-200 ease-in-out cursor-pointer">
+<span class="inline-block h-3.5 w-3.5 transform rounded-full bg-white transition duration-200 ease-in-out translate-x-4.5 shadow-sm"></span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-5 border-b border-border-light dark:border-border-dark">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-icons-round text-primary text-xl">aspect_ratio</span>
+<h4 class="font-semibold text-sm text-slate-700 dark:text-slate-200">Dimensions</h4>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-2 block">Aspect Ratio</label>
+<div class="bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 text-xs text-slate-700 dark:text-slate-300 flex justify-between items-center cursor-pointer hover:border-primary transition-colors">
+                                16:9 (Video) <span class="material-icons-round text-sm">expand_more</span>
+</div>
+</div>
+<div>
+<label class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-2 block">Width</label>
+<div class="bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 text-xs text-slate-700 dark:text-slate-300 flex justify-between items-center cursor-pointer hover:border-primary transition-colors">
+                                100% <span class="material-icons-round text-sm">expand_more</span>
+</div>
+</div>
+</div>
+<div class="mt-4">
+<label class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-2 block">Border Radius</label>
+<div class="flex items-center gap-3">
+<input class="flex-1 h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer dark:bg-slate-700" max="32" min="0" step="4" type="range" value="16"/>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-300 w-8 text-right">16px</span>
+</div>
+</div>
+</div>
+<div class="p-5">
+<button class="w-full bg-primary hover:bg-primary-dark text-white py-3 rounded-xl text-sm font-semibold shadow-md shadow-indigo-200 dark:shadow-none transition-all flex items-center justify-center gap-2">
+<span class="material-icons-round text-sm">save</span>
+                    Save Changes
+                </button>
+</div>
+</div>
+</div>
+</div>
+</div></body></html>

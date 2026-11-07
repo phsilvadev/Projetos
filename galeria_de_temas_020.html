@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BioLink Editor - Theme Gallery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#6366f1", // Indigo-500 equivalent
+                        "primary-dark": "#4f46e5",
+                        "background-light": "#f3f4f6", // Gray-100
+                        "background-dark": "#0f172a", // Slate-900
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e293b", // Slate-800
+                        "sidebar-dark": "#111827", // Gray-900
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'phone': '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                        'glow': '0 0 20px rgba(99, 102, 241, 0.5)',
+                        'inner-light': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
+                        'brutal': '4px 4px 0px 0px rgba(0,0,0,1)',
+                        'brutal-sm': '2px 2px 0px 0px rgba(0,0,0,1)',
+                        'paper': '2px 4px 12px rgba(0,0,0,0.08)',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #475569;
+        }
+        .app-bg-pattern {
+            background-color: #111827;
+            background-image: radial-gradient(#374151 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .paper-texture {
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDIqjndXL3c0K-9yUUkY2anMwkeK_Fd4qnlVmeaCDOQ9FB5FKrJP2XX9Lk9pKzTY4rVihUs21dvP52gzn3mPWcSsvnec4ZGpam8ooMvQFqcK2La21aFaRqJLSYvFWcftm9FxOpIkwJUggRtfO6rxZM8qBVjHI_MVuIohWk56gCX-M-E4J9u5Rs9JeDtgGs_A4Ra7sBqCSIf5bi99OhFWgBgtVn5uFTiMdYrPN3dAk9GLtoWzoBkm74hT1IPfOoxM4gRl0fHdcYpO4rm'); 
+            background-repeat: repeat;
+        }
+    </style>
+</head>
+<body class="bg-surface-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-sans h-screen flex overflow-hidden selection:bg-primary selection:text-white">
+<div class="hidden lg:flex lg:w-1/2 xl:w-5/12 bg-sidebar-dark relative flex-col justify-between overflow-hidden">
+<div class="absolute inset-0 app-bg-pattern opacity-40"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-sidebar-dark/50 to-sidebar-dark"></div>
+<div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/30 rounded-full blur-3xl mix-blend-screen animate-pulse"></div>
+<div class="absolute bottom-1/3 right-1/4 w-80 h-80 bg-purple-600/20 rounded-full blur-3xl mix-blend-screen"></div>
+<div class="relative z-10 p-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-gradient-to-tr from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center shadow-lg">
+<span class="material-icons-round text-white text-xl">auto_awesome</span>
+</div>
+<span class="text-white font-bold text-xl tracking-tight">SmartBio</span>
+</div>
+</div>
+<div class="relative z-10 flex-1 flex items-center justify-center perspective-[1000px]">
+<div class="relative transform rotate-y-6 rotate-z-2 scale-95 hover:rotate-y-0 hover:rotate-z-0 transition-all duration-700 ease-out shadow-2xl rounded-[45px]">
+<div class="relative w-[300px] h-[600px] bg-black rounded-[40px] shadow-phone border-[8px] border-black overflow-hidden z-0">
+<div class="absolute top-0 w-full h-8 z-20 flex justify-between items-center px-6 pt-2 text-gray-800 text-xs font-semibold mix-blend-multiply">
+<span>9:41</span>
+<div class="flex gap-1.5 items-center">
+<span class="material-icons-round text-[10px]">signal_cellular_alt</span>
+<span class="material-icons-round text-[10px]">wifi</span>
+<span class="material-icons-round text-[10px] rotate-90">battery_full</span>
+</div>
+</div>
+<div class="absolute top-2 left-1/2 transform -translate-x-1/2 w-20 h-5 bg-black rounded-full z-20"></div>
+<div class="w-full h-full relative overflow-hidden font-sans flex flex-col bg-[#f5f5dc]">
+<div class="absolute inset-0 paper-texture opacity-30 pointer-events-none"></div>
+<div class="relative mt-16 flex flex-col items-center z-10 px-6">
+<div class="w-24 h-24 rounded-full relative mb-4 shadow-lg bg-white p-1">
+<div class="w-full h-full rounded-full bg-gray-200 overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeFeSw-apJZAHOd-ZWUvTc2365vx8RFlT6RZKJyJFUlUYOdt79yiX5ZG0VyC4VqT2CCt0diz2G5y7iteKDhoNIx-VT9f5cPvo-N8CwXrtEpMug4AIfEWYMWAnx8MJxoZKO9xFXG9kx50tEpG2S0mxdMQREIzyFw1plNyUZ6Qn_8bmkUkhKZgiUYG6iYYjVjqOkz1GBXoo5vrkqYHpjFTDDWZYwNbrqSS3A42Z8xBI7ieYU_krQMo9Z_jlPBuc7yU2bx5ifPD54O1bs"/>
+</div>
+</div>
+<h1 class="text-xl font-bold text-gray-900 tracking-tight flex items-center justify-center gap-1 mb-1">
+                                    PixelMaster <span class="material-icons-round text-blue-500 text-sm">verified</span>
+</h1>
+<p class="text-xs text-gray-600 font-medium mb-8 mt-1 tracking-wide uppercase opacity-80">Design | Code | Cyber</p>
+<div class="w-full space-y-4 mb-8">
+<div class="w-full bg-white border border-gray-200 p-4 rounded-lg shadow-paper flex items-center justify-center gap-3 cursor-pointer transition-all hover:scale-[1.02] text-gray-800 group relative">
+<div class="absolute inset-0 bg-gray-50 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity"></div>
+<i class="fab fa-youtube text-red-600 text-lg relative z-10"></i>
+<span class="text-sm font-bold uppercase tracking-wider relative z-10">Latest Video</span>
+</div>
+<div class="w-full bg-white border border-gray-200 p-4 rounded-lg shadow-paper flex items-center justify-center gap-3 cursor-pointer transition-all hover:scale-[1.02] text-gray-800 group relative transform -rotate-1 hover:rotate-0">
+<div class="absolute inset-0 bg-gray-50 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity"></div>
+<i class="fas fa-globe text-gray-700 text-lg relative z-10"></i>
+<span class="text-sm font-bold uppercase tracking-wider relative z-10">My Portfolio</span>
+</div>
+<div class="w-full bg-white border border-gray-200 p-4 rounded-lg shadow-paper flex items-center justify-center gap-3 cursor-pointer transition-all hover:scale-[1.02] text-gray-800 group relative transform rotate-1 hover:rotate-0">
+<div class="absolute inset-0 bg-gray-50 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity"></div>
+<i class="fab fa-twitter text-blue-400 text-lg relative z-10"></i>
+<span class="text-sm font-bold uppercase tracking-wider relative z-10">Twitter Threads</span>
+</div>
+</div>
+<div class="flex justify-center gap-6">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-white/50 border border-gray-300 hover:bg-white hover:shadow-md transition-all cursor-pointer text-gray-600 hover:text-pink-600">
+<i class="fab fa-instagram text-xl"></i>
+</div>
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-white/50 border border-gray-300 hover:bg-white hover:shadow-md transition-all cursor-pointer text-gray-600 hover:text-black">
+<i class="fab fa-tiktok text-xl"></i>
+</div>
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-white/50 border border-gray-300 hover:bg-white hover:shadow-md transition-all cursor-pointer text-gray-600 hover:text-blue-600">
+<i class="far fa-envelope text-xl"></i>
+</div>
+</div>
+</div>
+<div class="mt-auto mb-6 text-center z-10">
+<p class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">SmartBio</p>
+</div>
+</div>
+</div>
+<div class="absolute -right-12 top-24 bg-surface-dark text-white p-3 pr-4 rounded-l-none rounded-r-2xl shadow-xl flex items-center gap-3 border-l-4 border-gray-300">
+<div class="w-2 h-2 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.6)] animate-pulse"></div>
+<div>
+<div class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Previewing</div>
+<div class="text-sm font-bold">Paper Stack</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative z-10 p-8 text-white/90">
+<h2 class="text-2xl font-bold mb-1">Gallery Preview</h2>
+<p class="text-gray-400 font-light text-sm max-w-sm">Applying "Paper Stack" theme.</p>
+</div>
+</div>
+<div class="flex-1 flex flex-col p-0 bg-surface-light dark:bg-background-dark overflow-hidden relative">
+<div class="lg:hidden p-6 flex items-center gap-2 border-b border-gray-200 dark:border-gray-800">
+<div class="w-8 h-8 bg-gradient-to-tr from-purple-500 to-indigo-500 rounded-lg flex items-center justify-center shadow-lg">
+<span class="material-icons-round text-white text-sm">auto_awesome</span>
+</div>
+<span class="text-gray-900 dark:text-white font-bold text-lg">SmartBio</span>
+</div>
+<header class="px-6 py-4 lg:px-12 lg:py-6 border-b border-gray-200 dark:border-gray-800 flex justify-between items-center bg-white dark:bg-surface-dark sticky top-0 z-20">
+<div>
+<div class="flex items-center gap-2 text-xs text-gray-500 mb-1">
+<button class="hover:text-primary transition-colors">Editor</button>
+<span class="material-icons-round text-[10px]">chevron_right</span>
+<span class="text-primary font-medium">Appearance</span>
+</div>
+<h2 class="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
+<button class="w-8 h-8 rounded-full bg-gray-100 dark:bg-slate-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors">
+<span class="material-icons-round text-lg text-gray-600 dark:text-gray-300">arrow_back</span>
+</button>
+                    Theme Gallery
+                </h2>
+</div>
+<div class="flex gap-3">
+<div class="relative hidden sm:block">
+<span class="material-icons-round absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg">search</span>
+<input class="pl-10 pr-4 py-2 bg-gray-100 dark:bg-slate-800 border-none rounded-lg text-sm text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-primary w-64" placeholder="Search themes..." type="text"/>
+</div>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto custom-scrollbar bg-gray-50 dark:bg-[#0b1120]">
+<div class="w-full max-w-5xl mx-auto p-6 lg:p-10">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+<div class="flex gap-2 overflow-x-auto hide-scrollbar w-full sm:w-auto pb-2 sm:pb-0">
+<button class="px-4 py-2 rounded-full bg-primary text-white text-sm font-medium shadow-lg shadow-primary/25 whitespace-nowrap">All Themes</button>
+<button class="px-4 py-2 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 text-sm font-medium hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors whitespace-nowrap">Minimal</button>
+<button class="px-4 py-2 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 text-sm font-medium hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors whitespace-nowrap">Creative</button>
+<button class="px-4 py-2 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 text-sm font-medium hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors whitespace-nowrap">Dark Mode</button>
+<button class="px-4 py-2 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 text-sm font-medium hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors whitespace-nowrap">Professional</button>
+</div>
+<div class="flex items-center gap-2 text-sm text-gray-500">
+<span>Sort by:</span>
+<select class="bg-transparent font-semibold text-gray-700 dark:text-gray-300 border-none focus:ring-0 cursor-pointer pr-8 py-0">
+<option>Popular</option>
+<option>Newest</option>
+<option>A-Z</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8 pb-12">
+<div class="group relative flex flex-col gap-3">
+<div class="aspect-[9/16] rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden relative cursor-pointer hover:shadow-xl hover:border-gray-300 dark:hover:border-gray-600 transition-all hover:scale-[1.02]">
+<div class="absolute inset-0 bg-gray-900"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-pink-500 rounded-full blur-3xl opacity-40"></div>
+<div class="absolute top-6 left-1/2 -translate-x-1/2 w-10 h-10 rounded-lg border-2 border-pink-500 shadow-[0_0_10px_rgba(236,72,153,0.5)]"></div>
+<div class="absolute top-20 left-6 right-6 h-3 bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.5)]"></div>
+<div class="absolute top-24 left-6 right-6 h-3 bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.5)] translate-y-2"></div>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[1px]">
+<button class="bg-white dark:bg-surface-dark text-gray-900 dark:text-white px-5 py-2.5 rounded-full font-bold text-xs shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                    Apply Theme
+                                </button>
+</div>
+</div>
+<div class="flex justify-between items-start px-1">
+<div>
+<h3 class="font-bold text-sm text-gray-900 dark:text-white">Neon Cyber</h3>
+<p class="text-xs text-gray-500">Dark • Glow</p>
+</div>
+</div>
+</div>
+<div class="group relative flex flex-col gap-3">
+<div class="aspect-[9/16] rounded-2xl border-2 border-primary ring-4 ring-primary/20 dark:ring-primary/10 overflow-hidden relative cursor-default shadow-xl transform scale-[1.02]">
+<div class="absolute top-3 right-3 z-30 w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-lg">
+<span class="material-icons-round text-white text-lg">check</span>
+</div>
+<div class="absolute inset-0 bg-[#f5f5dc]"></div>
+<div class="absolute inset-0 opacity-10" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDIqjndXL3c0K-9yUUkY2anMwkeK_Fd4qnlVmeaCDOQ9FB5FKrJP2XX9Lk9pKzTY4rVihUs21dvP52gzn3mPWcSsvnec4ZGpam8ooMvQFqcK2La21aFaRqJLSYvFWcftm9FxOpIkwJUggRtfO6rxZM8qBVjHI_MVuIohWk56gCX-M-E4J9u5Rs9JeDtgGs_A4Ra7sBqCSIf5bi99OhFWgBgtVn5uFTiMdYrPN3dAk9GLtoWzoBkm74hT1IPfOoxM4gRl0fHdcYpO4rm')"></div>
+<div class="absolute top-8 left-6 right-6 h-32 bg-white shadow-md rotate-2 border border-gray-200"></div>
+<div class="absolute top-8 left-6 right-6 h-32 bg-white shadow-lg -rotate-1 border border-gray-200"></div>
+<div class="absolute inset-0 bg-black/5 dark:bg-black/20 flex items-center justify-center backdrop-blur-[1px]">
+<span class="bg-white/90 text-primary border border-white/20 px-4 py-1.5 rounded-full font-bold text-xs backdrop-blur-md shadow-lg flex items-center gap-1">
+                                    Active
+                                </span>
+</div>
+</div>
+<div class="flex justify-between items-start px-1">
+<div>
+<h3 class="font-bold text-sm text-primary dark:text-primary">Paper Stack</h3>
+<p class="text-xs text-gray-500">Texture • Clean</p>
+</div>
+</div>
+</div>
+<div class="group relative flex flex-col gap-3">
+<div class="aspect-[9/16] rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden relative cursor-pointer hover:shadow-xl hover:border-gray-300 dark:hover:border-gray-600 transition-all hover:scale-[1.02]">
+<div class="absolute inset-0 bg-red-600"></div>
+<div class="absolute top-1/4 -right-4 w-32 h-32 rounded-full border-[16px] border-white/20"></div>
+<div class="absolute bottom-1/4 -left-4 w-20 h-20 rounded-full bg-white"></div>
+<div class="absolute top-20 left-6 right-6 h-3 bg-white"></div>
+<div class="absolute top-24 left-6 right-6 h-3 bg-white translate-y-2"></div>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[1px]">
+<button class="bg-white dark:bg-surface-dark text-gray-900 dark:text-white px-5 py-2.5 rounded-full font-bold text-xs shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                    Apply Theme
+                                </button>
+</div>
+</div>
+<div class="flex justify-between items-start px-1">
+<div>
+<h3 class="font-bold text-sm text-gray-900 dark:text-white">Swiss Bold</h3>
+<p class="text-xs text-gray-500">Typography • Red</p>
+</div>
+</div>
+</div>
+<div class="group relative flex flex-col gap-3">
+<div class="aspect-[9/16] rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden relative cursor-pointer hover:shadow-xl hover:border-gray-300 dark:hover:border-gray-600 transition-all hover:scale-[1.02]">
+<div class="absolute inset-0 bg-slate-900 flex flex-col items-center justify-center">
+<div class="w-full h-full opacity-20" style="background-image: linear-gradient(0deg, transparent 24%, #ffffff 25%, #ffffff 26%, transparent 27%, transparent 74%, #ffffff 75%, #ffffff 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, #ffffff 25%, #ffffff 26%, transparent 27%, transparent 74%, #ffffff 75%, #ffffff 76%, transparent 77%, transparent); background-size: 30px 30px;"></div>
+</div>
+<div class="absolute top-12 left-1/2 -translate-x-1/2 w-12 h-12 border-2 border-white rounded-md"></div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[1px]">
+<button class="bg-white dark:bg-surface-dark text-gray-900 dark:text-white px-5 py-2.5 rounded-full font-bold text-xs shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                    Apply Theme
+                                </button>
+</div>
+</div>
+<div class="flex justify-between items-start px-1">
+<div>
+<h3 class="font-bold text-sm text-gray-900 dark:text-white">Blueprint</h3>
+<p class="text-xs text-gray-500">Technical • Dark</p>
+</div>
+</div>
+</div>
+<div class="group relative flex flex-col gap-3">
+<div class="aspect-[9/16] rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden relative cursor-pointer hover:shadow-xl hover:border-gray-300 dark:hover:border-gray-600 transition-all hover:scale-[1.02]">
+<div class="absolute inset-0 bg-gradient-to-br from-yellow-100 to-orange-100"></div>
+<div class="absolute bottom-0 left-0 right-0 h-1/2 bg-white/50 backdrop-blur-sm rounded-t-3xl border-t border-white/60"></div>
+<div class="absolute top-8 left-1/2 -translate-x-1/2 w-12 h-12 bg-orange-300 rounded-full shadow-lg"></div>
+<div class="absolute inset-0 bg-black/5 dark:bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[1px]">
+<button class="bg-white dark:bg-surface-dark text-gray-900 dark:text-white px-5 py-2.5 rounded-full font-bold text-xs shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                    Apply Theme
+                                </button>
+</div>
+</div>
+<div class="flex justify-between items-start px-1">
+<div>
+<h3 class="font-bold text-sm text-gray-900 dark:text-white">Warm Glass</h3>
+<p class="text-xs text-gray-500">Soft • Frosted</p>
+</div>
+</div>
+</div>
+<div class="group relative flex flex-col gap-3">
+<div class="aspect-[9/16] rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden relative cursor-pointer hover:shadow-xl hover:border-gray-300 dark:hover:border-gray-600 transition-all hover:scale-[1.02]">
+<div class="absolute inset-0 bg-black"></div>
+<div class="absolute top-0 left-0 w-full h-full overflow-hidden">
+<div class="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-[conic-gradient(from_0deg,transparent_0_340deg,white_360deg)] animate-spin-slow opacity-10"></div>
+</div>
+<div class="absolute inset-[2px] bg-black rounded-2xl"></div>
+<div class="absolute top-8 left-1/2 -translate-x-1/2 w-10 h-10 border border-white rounded-full"></div>
+<div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[1px]">
+<button class="bg-white dark:bg-surface-dark text-gray-900 dark:text-white px-5 py-2.5 rounded-full font-bold text-xs shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                    Apply Theme
+                                </button>
+</div>
+</div>
+<div class="flex justify-between items-start px-1">
+<div>
+<h3 class="font-bold text-sm text-gray-900 dark:text-white">Void</h3>
+<p class="text-xs text-gray-500">Minimal • Pure Black</p>
+</div>
+</div>
+</div>
+<div class="group relative flex flex-col gap-3">
+<div class="aspect-[9/16] rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden relative cursor-pointer hover:shadow-xl hover:border-gray-300 dark:hover:border-gray-600 transition-all hover:scale-[1.02]">
+<div class="absolute inset-0 bg-[#e0f2f1]"></div>
+<div class="absolute top-0 right-0 w-32 h-32 bg-[#80cbc4] rounded-bl-full opacity-50"></div>
+<div class="absolute bottom-0 left-0 w-24 h-24 bg-[#4db6ac] rounded-tr-full opacity-50"></div>
+<div class="absolute top-8 left-1/2 -translate-x-1/2 w-12 h-12 bg-[#009688] rounded-tl-xl rounded-br-xl shadow-md"></div>
+<div class="absolute inset-0 bg-black/5 dark:bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[1px]">
+<button class="bg-white dark:bg-surface-dark text-gray-900 dark:text-white px-5 py-2.5 rounded-full font-bold text-xs shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                    Apply Theme
+                                </button>
+</div>
+</div>
+<div class="flex justify-between items-start px-1">
+<div>
+<h3 class="font-bold text-sm text-gray-900 dark:text-white">Mint Fresh</h3>
+<p class="text-xs text-gray-500">Nature • Calm</p>
+</div>
+</div>
+</div>
+<div class="group relative flex flex-col gap-3">
+<div class="aspect-[9/16] rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden relative cursor-pointer hover:shadow-xl hover:border-gray-300 dark:hover:border-gray-600 transition-all hover:scale-[1.02]">
+<div class="absolute inset-0 bg-indigo-600"></div>
+<div class="absolute inset-0 bg-[linear-gradient(45deg,#4f46e5_25%,transparent_25%,transparent_50%,#4f46e5_50%,#4f46e5_75%,transparent_75%,transparent)] bg-[length:20px_20px] opacity-10"></div>
+<div class="absolute top-8 left-1/2 -translate-x-1/2 w-10 h-10 bg-white rounded shadow-lg transform rotate-3"></div>
+<div class="absolute top-24 left-6 right-6 h-3 bg-white/20 rounded"></div>
+<div class="absolute top-28 left-6 right-6 h-3 bg-white/20 rounded translate-y-2"></div>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[1px]">
+<button class="bg-white dark:bg-surface-dark text-gray-900 dark:text-white px-5 py-2.5 rounded-full font-bold text-xs shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                    Apply Theme
+                                </button>
+</div>
+</div>
+<div class="flex justify-between items-start px-1">
+<div>
+<h3 class="font-bold text-sm text-gray-900 dark:text-white">Pattern Pro</h3>
+<p class="text-xs text-gray-500">Business • Pattern</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-surface-dark flex justify-between items-center">
+<a class="text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white flex items-center gap-1" href="#">
+<span class="material-icons-round text-base">help_outline</span>
+                Help Center
+            </a>
+<div class="flex gap-2">
+<span class="text-xs text-gray-400 self-center hidden sm:block">Showing 9-16 of 24 themes</span>
+<div class="flex gap-1">
+<button class="w-8 h-8 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-white hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-icons-round text-base">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-white hover:bg-gray-50 dark:hover:bg-slate-800">
+<span class="material-icons-round text-base">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

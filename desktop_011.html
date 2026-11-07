@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BioLink Preview: Desktop</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#6366f1",
+                        "primary-dark": "#4f46e5",
+                        "background-light": "#f3f4f6",
+                        "background-dark": "#0f172a",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e293b",
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                        'desktop': '0 20px 40px -12px rgba(0, 0, 0, 0.15)',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
+        .app-bg-pattern {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .dark .app-bg-pattern {
+            background-color: #0f172a;
+            background-image: radial-gradient(#334155 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen app-bg-pattern flex flex-col items-center py-6 sm:py-12 px-4">
+<main class="w-full max-w-3xl bg-white shadow-desktop sm:rounded-[2rem] rounded-xl overflow-hidden min-h-[85vh] flex flex-col relative transition-all duration-300 hover:shadow-2xl ring-1 ring-black/5">
+<div class="relative h-64 w-full overflow-hidden bg-white shrink-0">
+<div class="absolute inset-0 bg-gradient-to-tr from-cyan-900 via-indigo-900 to-purple-800"></div>
+<div class="absolute top-0 left-0 w-full h-full opacity-60 mix-blend-overlay">
+<div class="absolute top-[-20%] left-[-20%] w-[80%] h-[80%] bg-blue-500 rounded-full blur-3xl opacity-80"></div>
+<div class="absolute bottom-[-20%] right-[-20%] w-[80%] h-[80%] bg-pink-500 rounded-full blur-3xl opacity-80"></div>
+</div>
+<div class="absolute top-0 left-0 w-full px-8 py-6 flex justify-between items-center z-10 text-white">
+<div class="flex items-center gap-2 font-bold text-lg select-none tracking-tight">
+<span class="material-icons-round text-2xl text-indigo-300">auto_awesome</span>
+                    SmartBio
+                </div>
+<button class="hover:bg-white/10 p-2 rounded-full transition-colors active:scale-95">
+<span class="material-icons-round text-2xl">menu</span>
+</button>
+</div>
+<div class="absolute bottom-[-1px] left-0 w-full overflow-hidden leading-[0]">
+<svg class="relative block w-[calc(100%+1.3px)] h-[60px] fill-white" data-name="Layer 1" preserveAspectRatio="none" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
+<path d="M600,112.77C268.63,112.77,0,65.52,0,7.23V120H1200V7.23C1200,65.52,931.37,112.77,600,112.77Z"></path>
+</svg>
+</div>
+</div>
+<div class="flex flex-col items-center w-full px-8 pb-16 flex-grow">
+<div class="relative -mt-20 z-10 mb-6 group">
+<div class="w-32 h-32 rounded-full border-[6px] border-white shadow-xl overflow-hidden bg-gray-200 ring-4 ring-black/5">
+<img alt="Profile Avatar" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeFeSw-apJZAHOd-ZWUvTc2365vx8RFlT6RZKJyJFUlUYOdt79yiX5ZG0VyC4VqT2CCt0diz2G5y7iteKDhoNIx-VT9f5cPvo-N8CwXrtEpMug4AIfEWYMWAnx8MJxoZKO9xFXG9kx50tEpG2S0mxdMQREIzyFw1plNyUZ6Qn_8bmkUkhKZgiUYG6iYYjVjqOkz1GBXoo5vrkqYHpjFTDDWZYwNbrqSS3A42Z8xBI7ieYU_krQMo9Z_jlPBuc7yU2bx5ifPD54O1bs"/>
+</div>
+<div class="absolute bottom-1 right-1 bg-green-500 border-4 border-white w-6 h-6 rounded-full shadow-sm" title="Online"></div>
+</div>
+<div class="text-center mb-10 max-w-lg mx-auto">
+<h1 class="text-3xl font-extrabold text-gray-900 mb-3 tracking-tight">Rock Agency</h1>
+<p class="text-base text-gray-500 leading-relaxed">
+                    Rock Agency is a digital agency company and website studio specializing in products, commerce, and SaaS website solutions.
+                </p>
+</div>
+<div class="flex justify-center flex-wrap gap-6 mb-12">
+<a aria-label="Facebook" class="group w-12 h-12 rounded-full bg-gray-900 text-white flex items-center justify-center shadow-lg hover:bg-blue-600 hover:-translate-y-1 transition-all duration-300" href="#">
+<i class="fab fa-facebook-f text-lg group-hover:scale-110 transition-transform"></i>
+</a>
+<a aria-label="Instagram" class="group w-12 h-12 rounded-full bg-gray-900 text-white flex items-center justify-center shadow-lg hover:bg-pink-600 hover:-translate-y-1 transition-all duration-300" href="#">
+<i class="fab fa-instagram text-xl group-hover:scale-110 transition-transform"></i>
+</a>
+<a aria-label="LinkedIn" class="group w-12 h-12 rounded-full bg-gray-900 text-white flex items-center justify-center shadow-lg hover:bg-blue-700 hover:-translate-y-1 transition-all duration-300" href="#">
+<i class="fab fa-linkedin-in text-lg group-hover:scale-110 transition-transform"></i>
+</a>
+<a aria-label="YouTube" class="group w-12 h-12 rounded-full bg-gray-900 text-white flex items-center justify-center shadow-lg hover:bg-red-600 hover:-translate-y-1 transition-all duration-300" href="#">
+<i class="fab fa-youtube text-lg group-hover:scale-110 transition-transform"></i>
+</a>
+</div>
+<div class="w-full max-w-[600px] mb-8">
+<div class="rounded-2xl overflow-hidden shadow-sm border border-gray-200 relative h-64 bg-gray-100 group cursor-pointer hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+<img alt="Map Preview" class="w-full h-full object-cover opacity-90 grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHRZi_dBQEc4J6faJkbNwPyxBdKfYVv9epPDQPdyj1CpGwyUnSxqmYu_BtG9CAZKDN31Wct8LtkZtdQ_fv1O2uvcBmRdipe-l4zGjjIEdZ-k0Yddqng_8-eqov0Jl83r1FK_W-p3G837zTs50uGSC9fu_JKKmHyCOcoyt1hujxAAUhVQ9M5_P-EVxffUAxGIOA7ertVSx1Z2cZicwLG8yJE2NDxmxrVI40BiIaWJjkaORoB63Hs_KYcN-XF517PjIkNdhw1NkDJB5a"/>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-10 w-full">
+<div class="relative mb-3">
+<div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center animate-ping absolute inset-0"></div>
+<div class="w-12 h-12 rounded-full bg-primary/30 flex items-center justify-center relative backdrop-blur-sm border border-white/30">
+<div class="w-4 h-4 rounded-full bg-primary border-2 border-white shadow-sm"></div>
+</div>
+</div>
+<div class="flex flex-col items-center gap-2 transform transition-transform group-hover:translate-y-[-4px]">
+<div class="bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-lg text-xs font-bold shadow-md text-gray-800 border border-gray-100">
+                                Union Coop Al
+                            </div>
+<button class="bg-primary hover:bg-primary-dark text-white text-xs font-bold px-5 py-2.5 rounded-full shadow-lg transition-colors flex items-center gap-1">
+<span class="material-icons-round text-sm">near_me</span>
+                                See Location
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full max-w-[600px] mb-12">
+<a class="block w-full bg-gray-900 hover:bg-black text-white py-5 rounded-2xl text-base font-semibold text-center shadow-lg hover:shadow-xl relative group overflow-hidden transition-all duration-300 hover:-translate-y-0.5" href="#">
+<span class="relative z-10 flex items-center justify-center gap-3">
+<span class="material-icons-round text-xl">language</span>
+                        Visit our website
+                        <span class="material-symbols-outlined absolute right-6 text-sm opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">arrow_forward</span>
+</span>
+<div class="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-10 group-hover:animate-shine"></div>
+</a>
+</div>
+<div class="mt-auto flex flex-col items-center gap-4 opacity-80 hover:opacity-100 transition-opacity">
+<a class="bg-gray-50 rounded-full px-5 py-2 flex items-center gap-2 text-sm text-gray-500 border border-gray-200 hover:bg-white hover:border-primary/30 hover:text-primary transition-all shadow-sm" href="#">
+<span>smartbio.ai/rockagency</span>
+<span class="material-symbols-outlined text-[12px] bg-gray-200 text-gray-600 rounded-full p-1 group-hover:bg-primary group-hover:text-white">arrow_outward</span>
+</a>
+<p class="text-[10px] uppercase tracking-widest text-gray-400 font-semibold">Powered by SmartBio</p>
+</div>
+</div>
+</main>
+
+</body></html>
